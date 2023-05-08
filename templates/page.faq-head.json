@@ -1,0 +1,69 @@
+{
+  "sections": {
+    "main": {
+      "type": "faq-head",
+      "blocks": {
+        "aa2df9d2-74fa-471a-9e3c-09250ae357d5": {
+          "type": "heading",
+          "settings": {
+            "heading": "FAQ",
+            "heading_size": "h0"
+          }
+        },
+        "7aacb83f-1b29-49c5-ae68-5c45112f1c21": {
+          "type": "faq",
+          "settings": {
+            "question": "sdfocigesdnlkgnmsl",
+            "answer": "<p>]dszxfnvdskznfjneasoiznfjas<\/p>"
+          }
+        },
+        "fe03b516-cb5b-482f-8659-b3a14c1713bd": {
+          "type": "faq",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "<p>Our return policy is very simple. If you are not satisfied with your purchase, you may return it within 30 days for a full refund.<\/p>"
+          }
+        },
+        "315abdf0-c05e-47a2-afd5-bcc47c27d287": {
+          "type": "faq",
+          "settings": {
+            "question": "What is your return policy?3",
+            "answer": "<p>Our return policy is very simple. If you are not satisfied with your purchase, you may return it within 30 days for a full refund.<\/p>"
+          }
+        },
+        "a3c21b81-37e3-4f91-9b41-6113669d020c": {
+          "type": "faq",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "<p>Our return policy is very simple. If you are not satisfied with your purchase, you may return it within 30 days for a full refund.<\/p>"
+          }
+        },
+        "e5100d48-9419-4ccc-a52e-2bae9c709d38": {
+          "type": "faq",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "<p>Our return policy is very simple. If you are not satisfied with your purchase, you may return it within 30 days for a full refund.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "aa2df9d2-74fa-471a-9e3c-09250ae357d5",
+        "7aacb83f-1b29-49c5-ae68-5c45112f1c21",
+        "fe03b516-cb5b-482f-8659-b3a14c1713bd",
+        "315abdf0-c05e-47a2-afd5-bcc47c27d287",
+        "a3c21b81-37e3-4f91-9b41-6113669d020c",
+        "e5100d48-9419-4ccc-a52e-2bae9c709d38"
+      ],
+      "custom_css": [
+
+      ],
+      "settings": {
+        "content_alignment": "left",
+        "color_scheme": "background-1"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
