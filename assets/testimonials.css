@@ -1,0 +1,59 @@
+
+
+.container {
+	position: relative;
+	width: 100%;
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 0 20px;
+	box-sizing: border-box;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size: 24px;
+	font-weight: 100;
+}
+
+h5 {
+	font-weight: 300;
+}
+
+small {
+	font-weight: 600;
+}
+
+/* For devices larger than 400px */
+@media (min-width: 400px) {
+	.container {
+		width: 85%;
+		padding: 0;
+	}
+}
+
+@media (min-width: 550px) {
+	.container {
+		width: 80%;
+	}
+}
+
+#testimonial {
+	background: rgb(255,206,234);
+	background: -moz-linear-gradient(-45deg, rgba(255,206,234,1) 0%, rgba(125,185,232,1) 100%);
+	background: -webkit-linear-gradient(-45deg, rgba(255,206,234,1) 0%,rgba(125,185,232,1) 100%);
+	background: linear-gradient(135deg, rgba(255,206,234,1) 0%,rgba(125,185,232,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffceea', endColorstr='#7db9e8',GradientType=1 );
+	padding: 50px 0 50px 0;
+}
+
+.quoteLoop {
+	height: auto;
+	width: 100%;
+	margin: 0 auto;
+	position: relative;
+}
+
+.quote {
+	margin: 10px 30px;
+	height: inherit;
+	top: 0px;
+	display: none;
+	text-align: center;
+}
