@@ -9,37 +9,6 @@
     },
     "493d3017-c6d2-4d9e-9523-46b5e41a1fc2": {
       "type": "rich-text",
-      "blocks": {
-        "template--18819670704423__493d3017-c6d2-4d9e-9523-46b5e41a1fc2-16831830161cd7d206-0": {
-          "type": "heading",
-          "settings": {
-            "heading": "FAQ",
-            "heading_size": "h1"
-          }
-        },
-        "template--18819670704423__493d3017-c6d2-4d9e-9523-46b5e41a1fc2-16831830161cd7d206-1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Test<\/p><p><\/p>"
-          }
-        },
-        "template--18819670704423__493d3017-c6d2-4d9e-9523-46b5e41a1fc2-16831830161cd7d206-2": {
-          "type": "button",
-          "settings": {
-            "button_label": "Submit",
-            "button_link": "",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "template--18819670704423__493d3017-c6d2-4d9e-9523-46b5e41a1fc2-16831830161cd7d206-0",
-        "template--18819670704423__493d3017-c6d2-4d9e-9523-46b5e41a1fc2-16831830161cd7d206-1",
-        "template--18819670704423__493d3017-c6d2-4d9e-9523-46b5e41a1fc2-16831830161cd7d206-2"
-      ],
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",

@@ -14,35 +14,40 @@
           "type": "faq",
           "settings": {
             "question": "sdfocigesdnlkgnmsl",
-            "answer": "<p>]dszxfnvdskznfjneasoiznfjas<\/p>"
+            "answer": "<p>]dszxfnvdskznfjneasoiznfjas<\/p>",
+            "why-img": "shopify:\/\/shop_images\/galaxybook_7d7ed2e4-7249-45b5-994a-811787f7a358.jpg"
           }
         },
         "fe03b516-cb5b-482f-8659-b3a14c1713bd": {
           "type": "faq",
           "settings": {
             "question": "What is your return policy?",
-            "answer": "<p>Our return policy is very simple. If you are not satisfied with your purchase, you may return it within 30 days for a full refund.<\/p>"
+            "answer": "<p>Our return policy is very simple. If you are not satisfied with your purchase, you may return it within 30 days for a full refund.<\/p>",
+            "why-img": "shopify:\/\/shop_images\/hiker-running-up-beaten-track-between-the-trees.jpg"
           }
         },
         "315abdf0-c05e-47a2-afd5-bcc47c27d287": {
           "type": "faq",
           "settings": {
             "question": "What is your return policy?3",
-            "answer": "<p>Our return policy is very simple. If you are not satisfied with your purchase, you may return it within 30 days for a full refund.<\/p>"
+            "answer": "<p>Our return policy is very simple. If you are not satisfied with your purchase, you may return it within 30 days for a full refund.<\/p>",
+            "why-img": "shopify:\/\/shop_images\/entrepreneurs-journal.jpg"
           }
         },
         "a3c21b81-37e3-4f91-9b41-6113669d020c": {
           "type": "faq",
           "settings": {
             "question": "What is your return policy?",
-            "answer": "<p>Our return policy is very simple. If you are not satisfied with your purchase, you may return it within 30 days for a full refund.<\/p>"
+            "answer": "<p>Our return policy is very simple. If you are not satisfied with your purchase, you may return it within 30 days for a full refund.<\/p>",
+            "why-img": "shopify:\/\/shop_images\/galaxybook_7d7ed2e4-7249-45b5-994a-811787f7a358.jpg"
           }
         },
         "e5100d48-9419-4ccc-a52e-2bae9c709d38": {
           "type": "faq",
           "settings": {
             "question": "What is your return policy?",
-            "answer": "<p>Our return policy is very simple. If you are not satisfied with your purchase, you may return it within 30 days for a full refund.<\/p>"
+            "answer": "<p>Our return policy is very simple. If you are not satisfied with your purchase, you may return it within 30 days for a full refund.<\/p>",
+            "why-img": "shopify:\/\/shop_images\/person-fishing-on-the-beach-is-silhouetted-at-sunset.jpg"
           }
         }
       },
@@ -61,9 +66,23 @@
         "content_alignment": "left",
         "color_scheme": "background-1"
       }
+    },
+    "b25c5824-5230-484e-bbaa-eaa405b15c7d": {
+      "type": "slideshow",
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "b25c5824-5230-484e-bbaa-eaa405b15c7d"
   ]
 }
