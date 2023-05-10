@@ -1,12 +1,170 @@
+{{ 'section-faq-head.css' | asset_url | stylesheet_tag }}
+{{ 'section-rich-text.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'faq.js' | asset_url }}" defer="defer"></script>
+
+
+<div class="container color-{{  section.settings.color_scheme}}">
+  {% for block in section.blocks %}
+    {% if block.type == 'heading' %}
+      <h1 class="rich-text__heading rte inline-richtext  {{ block.settings.heading_size }} "
+              {{ block.shopify_attributes }}>
+        {{ block.settings.heading }}
+      </h1>
+    {% endif %}
+
+    {% if block.type == 'faq' %}
+      <p { section.settings.content_alignment }}">{{ block.settings.question }}</p>
+      <div  {{ section.settings.content_alignment }}">
+        <p>{{ block.settings.answer }}</p>
+
+        <div id="products">
+          <img src="{{ block.settings.why-img | img_url: '400x200' }}" alt="">
+        </div>
+      </div>
+
+    {% endif %}
+
+
+  {% endfor %}
+
+  {% for media in product.media %}
+    {% if media.media_type == 'video' %}
+      {{ media | video_tag: autoplay: true, loop: true, muted: true, controls: true }}
+    {% endif %}
+  {% endfor %}
+
+
+
+
+
+</div>
+
+
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "faq",
+  "settings": [{
+    "type": "select",
+    "id": "content_alignment",
+    "options": [
+      {
+        "value": "left",
+        "label": "t:sections.rich-text.settings.content_alignment.options__1.label"
+      },
+      {
+        "value": "center",
+        "label": "t:sections.rich-text.settings.content_alignment.options__2.label"
+      },
+      {
+        "value": "right",
+        "label": "t:sections.rich-text.settings.content_alignment.options__3.label"
+      }
+    ],
+    "default": "center",
+    "label": "t:sections.rich-text.settings.content_alignment.label"
+  },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.all.colors.accent_1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.all.colors.accent_2.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.all.colors.background_1.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.all.colors.background_2.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.all.colors.inverse.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "t:sections.all.colors.label"
+    }
+  ],
+
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "t:sections.rich-text.blocks.heading.name",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "Talk about your brand",
+          "label": "t:sections.rich-text.blocks.heading.settings.heading.label"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_size.options__1.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_size.options__2.label"
+            },
+            {
+              "value": "h0",
+              "label": "t:sections.all.heading_size.options__3.label"
+            },
+            {
+              "value": "hxl",
+              "label": "t:sections.all.heading_size.options__4.label"
+            }
+          ],
+          "default": "h1",
+          "label": "t:sections.all.heading_size.label"
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "FAQ Item",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What is your return policy?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Our return policy is very simple. If you are not satisfied with your purchase, you may return it within 30 days for a full refund.</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "why-img",
+          "label": "why images"
+
+        }
+
+
+
+      ]
+    }
+
+  ]
+
+}
+
 {% endschema %}
 
-{% stylesheet %}
-{% endstylesheet %}
-
-{% javascript %}
-{% endjavascript %}
