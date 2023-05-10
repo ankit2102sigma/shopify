@@ -2,25 +2,22 @@
 {{ 'section-rich-text.css' | asset_url | stylesheet_tag }}
 
 {% for block in section.blocks %}
-  <div class="container color-{{ section.settings.color_scheme }}">
-    <h1 class="rich-text__heading rte inline-richtext {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>
-      Testimonials
-    </h1>
+ {% if block.type == 'testimonials' %}
+  <section id="testimonial">
+  <div class="container">
+    <div class="quoteLoop">
+            <blockquote class="quote"><img src="{{ block.settings.why-img | img_url: '100x100' }}" alt="">
+        <h5>&nbsp;<br>
+          &rdquo;{{ block.settings.question }}&rdquo;<br>
 
-    {% if block.type == 'testimonials' %}
-      <p class="{{ section.settings.content_alignment }}">{{ block.settings.question }}</p>
-      <div class="{{ section.settings.content_alignment }}">
-        <p>{{ block.settings.answer }}</p>
-
-        <div id="products">
-          <div class="circle-image">
-            <img src="{{ block.settings.why-img | img_url: '400x400' }}" alt="">
-          </div>
-        </div>
-      </div>
+            <small>{{ block.settings.answer }}</small></h5>
+      </blockquote>
       <hr>
-    {% endif %}
+    </div>
   </div>
+  </section>
+      
+    {% endif %}
 {% endfor %}
 
 {% for media in product.media %}
