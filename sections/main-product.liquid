@@ -114,7 +114,7 @@
                   {{ form | payment_terms }}
                 {%- endform -%}
               </div>
-            {{ product.variants.first.weight | weight_with_unit }}
+            
             {%- when 'inventory' -%}
               <p
                 class="product__inventory no-js-hidden{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
@@ -163,9 +163,16 @@
                 {%- endif -%}
               </p>
             {%- when 'description' -%}
-              {%- if product.description != blank -%}
+              {%- if product.variants.first.weight != blank -%}
                 <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
                   {{ product.description }}
+                </div>
+              {%- endif -%}
+
+              {%- when 'weight' -%}
+              {%- if product.description != blank -%}
+                <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
+                  {{ product.variants.first.weight | weight_with_unit }}
                 </div>
               {%- endif -%}
             {%- when 'sku' -%}
