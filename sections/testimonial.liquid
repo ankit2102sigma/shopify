@@ -8,30 +8,22 @@
   <section id="testimonial">
   <div class="container">
     <div class="quoteLoop">
-            <blockquote class="quote"><img src="{{ block.settings.why-img | img_url: '200x200' }}" alt="">
+      <blockquote class="quote">
+        {% if block.settings.why-img %}
+        <img src="{{ block.settings.why-img | img_url: '200x200' }}" alt="">
+        {% endif %}
         <h5>&nbsp;<br>
           {{ block.settings.question }};<br>
-
-            <small>{{ block.settings.answer }}</small></h5>
+          <small>{{ block.settings.answer }}</small>
+        </h5>
       </blockquote>
       <hr>
     </div>
   </div>
   </section>
-      
 {% endfor %}
 
 
-
-
-
-
-
-
-
-
-
-</div>
 
 {% schema %}
 {
