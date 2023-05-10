@@ -1,7 +1,4 @@
 
-#testimonial{
-  text-align:center;
-}
 .container {
 	position: relative;
 	width: 100%;
@@ -44,6 +41,7 @@ small {
 	background: linear-gradient(135deg, rgba(255,206,234,1) 0%,rgba(125,185,232,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffceea', endColorstr='#7db9e8',GradientType=1 );
 	padding: 50px 0 50px 0;
+    text-align:center;
 }
 
 .quoteLoop {
