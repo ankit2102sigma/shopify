@@ -1,10 +1,8 @@
 {
   "sections": {
     "main": {
-      "type": "main-page",
+      "type": "testimonial",
       "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
       }
     },
     "44a518ac-66d8-49ee-bca0-0a5c472c3c47": {
