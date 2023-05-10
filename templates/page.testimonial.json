@@ -17,14 +17,24 @@
           "settings": {
             "question": "The laptop I purchased exceeded my expectations in terms of performance, design, and battery life. It arrived in perfect condition and has been a reliable companion for all my computing needs. I highly recommend  anyone in search of a top-notch laptop and a wonderful shopping experience.",
             "answer": "<p>Sudha<\/p>",
-            "why-img": "shopify:\/\/shop_images\/entrepreneurs-journal.jpg",
+            "why-img": "shopify:\/\/shop_images\/a-barista-smiles-proudly-stood-in-her-cafe.jpg",
+            "heading_size": "h1"
+          }
+        },
+        "94552185-0e79-47fa-82cd-e0089b4c69df": {
+          "type": "testimonials",
+          "settings": {
+            "question": "Testimonials I recently purchased a laptop from [Your Laptop Website], and I wanted to share my experience because it has been absolutely fantastic!The website offered a great selection of laptops to choose from, catering to different budgets and needs. It was easy to navigate and find the perfect laptop for me. The ordering process was simple and straightforward, and I received regular updates on the status of my order.;",
+            "answer": "<p>Rohit Sharma<\/p>",
+            "why-img": "shopify:\/\/shop_images\/woman-playing-with-blonde-hair.jpg",
             "heading_size": "h1"
           }
         }
       },
       "block_order": [
         "5e88bdd7-fddd-4d92-9a62-0e2f753ba92e",
-        "66d9005a-e4fd-4f93-ae35-c7dbe76a0bd9"
+        "66d9005a-e4fd-4f93-ae35-c7dbe76a0bd9",
+        "94552185-0e79-47fa-82cd-e0089b4c69df"
       ],
       "settings": {
         "content_alignment": "center",
