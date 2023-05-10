@@ -2,22 +2,28 @@
   "sections": {
     "main": {
       "type": "testimonial",
+      "blocks": {
+        "5e88bdd7-fddd-4d92-9a62-0e2f753ba92e": {
+          "type": "testimonials",
+          "settings": {
+            "question": "Best Service",
+            "answer": "<p>Ankit<\/p>",
+            "why-img": "shopify:\/\/shop_images\/person-fishing-on-the-beach-is-silhouetted-at-sunset.jpg",
+            "heading": "Testimonials",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "5e88bdd7-fddd-4d92-9a62-0e2f753ba92e"
+      ],
       "settings": {
-      }
-    },
-    "44a518ac-66d8-49ee-bca0-0a5c472c3c47": {
-      "type": "page",
-      "settings": {
-        "page": "faq",
-        "heading_size": "h1",
-        "color_scheme": "background-1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "content_alignment": "center",
+        "color_scheme": "background-1"
       }
     }
   },
   "order": [
-    "main",
-    "44a518ac-66d8-49ee-bca0-0a5c472c3c47"
+    "main"
   ]
 }
