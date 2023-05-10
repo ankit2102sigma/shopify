@@ -172,7 +172,7 @@
               {%- when 'weight' -%}
               {%- if product.description != blank -%}
                 <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
-                  {{ product.variants.first.weight | weight_with_unit }}
+                  Weight: {{ product.variants.first.weight | weight_with_unit }}
                 </div>
               {%- endif -%}
             {%- when 'sku' -%}
