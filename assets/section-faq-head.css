@@ -83,3 +83,11 @@
       .faq__blocks {
         width: 100%;
       }
+
+
+.circle-image {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 200px; /* Adjust the size as needed */
+  height: 200px; /* Adjust the size as needed */
+}
