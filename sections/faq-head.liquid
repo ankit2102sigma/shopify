@@ -8,7 +8,7 @@
   {% for block in section.blocks %}
     {% if block.type == 'heading' %}
       <h1 class="rich-text__heading rte inline-richtext  {{ block.settings.heading_size }} "
-        {{ block.shopify_attributes }}>
+              {{ block.shopify_attributes }}>
         {{ block.settings.heading }}
       </h1>
     {% endif %}
@@ -17,44 +17,47 @@
       <button class="accordion {{ section.settings.content_alignment }}">{{ block.settings.question }}</button>
       <div class="panel {{ section.settings.content_alignment }}">
         <p>{{ block.settings.answer }}</p>
+
+        <div id="products">
+          <img src="{{ block.settings.why-img | img_url: '400x200' }}" alt="">
+        </div>
       </div>
+
     {% endif %}
+
+
   {% endfor %}
 
-  {% if block.type == 'video' %}
-    <div class="video-container {{ section.settings.content_alignment }}">
-      <iframe src="{{ block.settings.video_url }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    </div>
-  {% endif %}
+
 
 </div>
 
 
 
 {% schema %}
-  {
-    "name": "faq",
-    "settings": [{
-      "type": "select",
-      "id": "content_alignment",
-      "options": [
-        {
-          "value": "left",
-          "label": "t:sections.rich-text.settings.content_alignment.options__1.label"
-        },
-        {
-          "value": "center",
-          "label": "t:sections.rich-text.settings.content_alignment.options__2.label"
-        },
-        {
-          "value": "right",
-          "label": "t:sections.rich-text.settings.content_alignment.options__3.label"
-        }
-      ],
-      "default": "center",
-      "label": "t:sections.rich-text.settings.content_alignment.label"
-    },
-     {
+{
+  "name": "faq",
+  "settings": [{
+    "type": "select",
+    "id": "content_alignment",
+    "options": [
+      {
+        "value": "left",
+        "label": "t:sections.rich-text.settings.content_alignment.options__1.label"
+      },
+      {
+        "value": "center",
+        "label": "t:sections.rich-text.settings.content_alignment.options__2.label"
+      },
+      {
+        "value": "right",
+        "label": "t:sections.rich-text.settings.content_alignment.options__3.label"
+      }
+    ],
+    "default": "center",
+    "label": "t:sections.rich-text.settings.content_alignment.label"
+  },
+    {
       "type": "select",
       "id": "color_scheme",
       "options": [
@@ -82,8 +85,8 @@
       "default": "background-1",
       "label": "t:sections.all.colors.label"
     }
-    ],
-  
+  ],
+
   "blocks": [
     {
       "type": "heading",
@@ -122,7 +125,7 @@
         }
       ]
     },
-       {
+    {
       "type": "faq",
       "name": "FAQ Item",
       "limit": 5,
@@ -138,24 +141,22 @@
           "id": "answer",
           "label": "Answer",
           "default": "<p>Our return policy is very simple. If you are not satisfied with your purchase, you may return it within 30 days for a full refund.</p>"
-        }
-      ]
-    },
-    {
-      "type": "video",
-      "name": "Video",
-      "settings": [
+        },
         {
-          "type": "text",
-          "id": "video_url",
-          "label": "Video URL",
-          "default": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          "type": "image_picker",
+          "id": "why-img",
+          "label": "why images"
+
         }
+
+
+
       ]
     }
 
   ]
-  }
+
+}
 
 {% endschema %}
 
