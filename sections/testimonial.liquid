@@ -6,14 +6,14 @@
 
 <div class="container color-{{  section.settings.color_scheme}}">
   {% for block in section.blocks %}
-    {% if block.type == 'heading' %}
+    {% if block.type == 'testimonials' %}
       <h1 class="rich-text__heading rte inline-richtext  {{ block.settings.heading_size }} "
               {{ block.shopify_attributes }}>
         {{ block.settings.heading }}
       </h1>
     {% endif %}
 
-    {% if block.type == 'faq' %}
+    {% if block.type == 'testimonials' %}
       <p { section.settings.content_alignment }}">{{ block.settings.question }}</p>
       <div  {{ section.settings.content_alignment }}">
         <p>{{ block.settings.answer }}</p>
