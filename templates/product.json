@@ -48,6 +48,11 @@
           "type": "description",
           "settings": {
           }
+        },
+        "efb65d20-d819-4024-8a66-f66d9c7af813": {
+          "type": "weight",
+          "settings": {
+          }
         }
       },
       "block_order": [
@@ -58,7 +63,8 @@
         "quantity_selector",
         "buy_buttons",
         "share",
-        "description"
+        "description",
+        "efb65d20-d819-4024-8a66-f66d9c7af813"
       ],
       "settings": {
         "enable_sticky_info": true,
