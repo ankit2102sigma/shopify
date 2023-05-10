@@ -40,31 +40,30 @@
 
 </div>
 
-
-
 {% schema %}
 {
   "name": "Testimonials",
-  "settings": [{
-    "type": "select",
-    "id": "content_alignment",
-    "options": [
-      {
-        "value": "left",
-        "label": "t:sections.rich-text.settings.content_alignment.options__1.label"
-      },
-      {
-        "value": "center",
-        "label": "t:sections.rich-text.settings.content_alignment.options__2.label"
-      },
-      {
-        "value": "right",
-        "label": "t:sections.rich-text.settings.content_alignment.options__3.label"
-      }
-    ],
-    "default": "center",
-    "label": "t:sections.rich-text.settings.content_alignment.label"
-  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.rich-text.settings.content_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.rich-text.settings.content_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.rich-text.settings.content_alignment.options__3.label"
+        }
+      ],
+      "default": "center",
+      "label": "t:sections.rich-text.settings.content_alignment.label"
+    },
     {
       "type": "select",
       "id": "color_scheme",
@@ -94,13 +93,29 @@
       "label": "t:sections.all.colors.label"
     }
   ],
-
   "blocks": [
     {
-      "type": "heading",
-      "name": "t:sections.rich-text.blocks.heading.name",
-      "limit": 3,
+      "type": "testimonials",
+      "name": "Add Testimonials",
+      "limit": 5,
       "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Description",
+          "default": "Your Review"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Name",
+          "default": "<p>customer name</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "why-img",
+          "label": "Why Images"
+        },
         {
           "type": "inline_richtext",
           "id": "heading",
@@ -132,39 +147,9 @@
           "label": "t:sections.all.heading_size.label"
         }
       ]
-    },
-    {
-      "type": "faq",
-      "name": "FAQ Item",
-      "limit": 5,
-      "settings": [
-        {
-          "type": "text",
-          "id": "question",
-          "label": "Question",
-          "default": "What is your return policy?"
-        },
-        {
-          "type": "richtext",
-          "id": "answer",
-          "label": "Answer",
-          "default": "<p>Our return policy is very simple. If you are not satisfied with your purchase, you may return it within 30 days for a full refund.</p>"
-        },
-        {
-          "type": "image_picker",
-          "id": "why-img",
-          "label": "why images"
-
-        }
-
-
-
-      ]
     }
-
   ]
-
 }
-
 {% endschema %}
+
 
