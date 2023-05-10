@@ -2,7 +2,7 @@
 {{ 'section-rich-text.css' | asset_url | stylesheet_tag }}
 
 {% for block in section.blocks %}
- {% if block.type == 'testimonials' %}
+
   <section id="testimonial">
   <div class="container">
     <div class="quoteLoop">
@@ -17,14 +17,9 @@
   </div>
   </section>
       
-    {% endif %}
 {% endfor %}
 
-{% for media in product.media %}
-  {% if media.media_type == 'video' %}
-    {{ media | video_tag: autoplay: true, loop: true, muted: true, controls: true }}
-  {% endif %}
-{% endfor %}
+
 
 
 
