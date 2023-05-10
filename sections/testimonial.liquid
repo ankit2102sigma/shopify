@@ -1,8 +1,9 @@
 {{ 'testimonials.css' | asset_url | stylesheet_tag }}
 {{ 'section-rich-text.css' | asset_url | stylesheet_tag }}
 
-{% for block in section.blocks %}
+<h1 style="text-align: center;">Testimonials</h1>
 
+{% for block in section.blocks %}
   <section id="testimonial">
   <div class="container">
     <div class="quoteLoop">
