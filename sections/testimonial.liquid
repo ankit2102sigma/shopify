@@ -1,38 +1,33 @@
 {{ 'section-faq-head.css' | asset_url | stylesheet_tag }}
 {{ 'section-rich-text.css' | asset_url | stylesheet_tag }}
-
-
-
-
-
-  {% for block in section.blocks %}
-    <div class="container color-{{  section.settings.color_scheme}}">
-       <h1 class="rich-text__heading rte inline-richtext  {{ block.settings.heading_size }} "
-              {{ block.shopify_attributes }}>
-        Testimonials
-      </h1>
-
+    <h1 class="rich-text__heading rte inline-richtext {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>
+      Testimonials
+    </h1>
+{% for block in section.blocks %}
+  <div class="container color-{{ section.settings.color_scheme }}">
 
     {% if block.type == 'testimonials' %}
-      <p { section.settings.content_alignment }}">{{ block.settings.question }}</p>
-      <div  {{ section.settings.content_alignment }}">
+      <p class="{{ section.settings.content_alignment }}">{{ block.settings.question }}</p>
+      <div class="{{ section.settings.content_alignment }}">
         <p>{{ block.settings.answer }}</p>
 
         <div id="products">
           <img src="{{ block.settings.why-img | img_url: '400x200' }}" alt="">
         </div>
       </div>
-
+      <hr>
     {% endif %}
+  </div>
+{% endfor %}
+
+{% for media in product.media %}
+  {% if media.media_type == 'video' %}
+    {{ media | video_tag: autoplay: true, loop: true, muted: true, controls: true }}
+  {% endif %}
+{% endfor %}
 
 
-  {% endfor %}
 
-  {% for media in product.media %}
-    {% if media.media_type == 'video' %}
-      {{ media | video_tag: autoplay: true, loop: true, muted: true, controls: true }}
-    {% endif %}
-  {% endfor %}
 
 
 
