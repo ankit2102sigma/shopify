@@ -15,8 +15,9 @@
         "66d9005a-e4fd-4f93-ae35-c7dbe76a0bd9": {
           "type": "testimonials",
           "settings": {
-            "question": "Your Review",
-            "answer": "<p>customer name<\/p>",
+            "question": "The laptop I purchased exceeded my expectations in terms of performance, design, and battery life. It arrived in perfect condition and has been a reliable companion for all my computing needs. I highly recommend  anyone in search of a top-notch laptop and a wonderful shopping experience.",
+            "answer": "<p>Sudha<\/p>",
+            "why-img": "shopify:\/\/shop_images\/entrepreneurs-journal.jpg",
             "heading_size": "h1"
           }
         }
