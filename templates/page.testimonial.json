@@ -7,8 +7,6 @@
           "type": "testimonials",
           "settings": {
             "question": "I recently purchased a laptop from [Your Laptop Website], and I wanted to share my experience because it has been absolutely fantastic!The website offered a great selection of laptops to choose from, catering to different budgets and needs. It was easy to navigate and find the perfect laptop for me. The ordering process was simple and straightforward, and I received regular updates on the status of my order.",
-            "autoplay": true,
-            "delay": "5000",
             "answer": "<p>Ankit<\/p>",
             "why-img": "shopify:\/\/shop_images\/the-man-in-the-hat.jpg",
             "heading_size": "h1"
@@ -18,8 +16,6 @@
           "type": "testimonials",
           "settings": {
             "question": "The laptop I purchased exceeded my expectations in terms of performance, design, and battery life. It arrived in perfect condition and has been a reliable companion for all my computing needs. I highly recommend  anyone in search of a top-notch laptop and a wonderful shopping experience.",
-            "autoplay": true,
-            "delay": "5000",
             "answer": "<p>Sudha<\/p>",
             "why-img": "shopify:\/\/shop_images\/a-barista-smiles-proudly-stood-in-her-cafe.jpg",
             "heading_size": "h1"
@@ -29,8 +25,6 @@
           "type": "testimonials",
           "settings": {
             "question": "Testimonials I recently purchased a laptop from [Your Laptop Website], and I wanted to share my experience because it has been absolutely fantastic!The website offered a great selection of laptops to choose from, catering to different budgets and needs. It was easy to navigate and find the perfect laptop for me. The ordering process was simple and straightforward, and I received regular updates on the status of my order.;",
-            "autoplay": false,
-            "delay": "5000",
             "answer": "<p>Rohit Sharma<\/p>",
             "why-img": "shopify:\/\/shop_images\/woman-playing-with-blonde-hair.jpg",
             "heading_size": "h1"
@@ -44,6 +38,8 @@
       ],
       "settings": {
         "content_alignment": "center",
+        "autoplay": true,
+        "delay": "1000",
         "color_scheme": "background-1"
       }
     }
