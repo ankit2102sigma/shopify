@@ -6,41 +6,38 @@
 
 {% for block in section.blocks %}
   <section id="testimonial">
-  <div class="container">
-    <div class="quoteLoop">
-      <blockquote class="quote">
-        {% if block.settings.why-img %}
-        <img src="{{ block.settings.why-img | img_url: '200x200' }}" alt="">
-        {% endif %}
-        <h5>&nbsp;<br>
-          {{ block.settings.question }};<br>
-          <small>{{ block.settings.answer }}</small>
-        </h5>
-      </blockquote>
-      <hr>
+    <div class="container">
+      <div class="quoteLoop">
+        <blockquote class="quote">
+          {% if block.settings['why-img'] %}
+            <img src="{{ block.settings.why-img | img_url: '200x200' }}" alt="">
+          {% endif %}
+          <h5>
+            &nbsp;<br>
+            {{ block.settings.question }};<br>
+            <small>{{ block.settings.answer }}</small>
+          </h5>
+        </blockquote>
+        <hr>
+      </div>
     </div>
-  </div>
   </section>
 {% endfor %}
 
+<script src="//cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
+<script>
+  const swiper = new Swiper('.swiper-container', {
 
-  <script src="//cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
-  <script>
-    const swiper = new Swiper('.swiper-container', {
-     
-      autoplay: {delay: {{section.settings.delay}} },
+    autoplay: {delay: {{section.settings.delay}} },
 
-      loop: true,
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
-  </script>
-
-
-
+    loop: true,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+</script>
 
 {% schema %}
 {
@@ -107,6 +104,17 @@
           "label": "Description",
           "default": "Your Review"
         },
+         {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay"
+    },
+    {
+      "type": "text",
+      "id": "delay",
+      "label": "Delay between transitions (in ms)",
+      "default": "5000"
+    },
         {
           "type": "richtext",
           "id": "answer",
@@ -148,5 +156,3 @@
   ]
 }
 {% endschema %}
-
-
