@@ -5,20 +5,30 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "announcement-bar-0": {
-          "type": "announcement",
+        "4c9571f3-145c-4cc3-a7b7-617c07362617": {
+          "type": "header",
           "settings": {
-            "text": "Welcome to our store",
-            "text_alignment": "center",
-            "color_scheme": "background-2",
-            "link": ""
+            "message": "20% off on Diwali Dhamaka offer"
+          }
+        },
+        "40623a1b-2dd2-4bfe-b016-c623c1ecc35b": {
+          "type": "header",
+          "settings": {
+            "message": "10% for students on every laptop"
           }
         }
       },
       "block_order": [
-        "announcement-bar-0"
+        "4c9571f3-145c-4cc3-a7b7-617c07362617",
+        "40623a1b-2dd2-4bfe-b016-c623c1ecc35b"
       ],
       "settings": {
+        "show_announcement_bar": true,
+        "autoplay": true,
+        "delay": "1000",
+        "colorBackground": "#550808",
+        "colorText": "#fff",
+        "content_alignment": "center"
       }
     },
     "header": {
