@@ -3,13 +3,6 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "vendor": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.vendor }}",
-            "text_style": "uppercase"
-          }
-        },
         "title": {
           "type": "title",
           "settings": {
@@ -53,10 +46,16 @@
           "type": "weight",
           "settings": {
           }
+        },
+        "c0823b0d-d9e6-46e2-8c1a-7b6018edc6a7": {
+          "type": "text",
+          "settings": {
+            "text": "Origin - {{ product.metafields.custom.origin.value }}",
+            "text_style": "uppercase"
+          }
         }
       },
       "block_order": [
-        "vendor",
         "title",
         "price",
         "variant_picker",
@@ -64,7 +63,8 @@
         "buy_buttons",
         "share",
         "description",
-        "efb65d20-d819-4024-8a66-f66d9c7af813"
+        "efb65d20-d819-4024-8a66-f66d9c7af813",
+        "c0823b0d-d9e6-46e2-8c1a-7b6018edc6a7"
       ],
       "settings": {
         "enable_sticky_info": true,
