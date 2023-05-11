@@ -163,14 +163,15 @@
                 {%- endif -%}
               </p>
             {%- when 'description' -%}
-              {%- if product.variants.first.weight != blank -%}
+            {%- if product.description != blank -%}
+              
                 <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
                   {{ product.description }}
                 </div>
               {%- endif -%}
 
               {%- when 'weight' -%}
-              {%- if product.description != blank -%}
+              {%- if product.variants.first.weight != blank -%}
                 <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
                   Weight: {{ product.variants.first.weight | weight_with_unit }}
                
