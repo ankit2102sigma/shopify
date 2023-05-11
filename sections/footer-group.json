@@ -48,7 +48,7 @@
     "footer": {
       "type": "footer",
       "settings": {
-        "color_scheme": "background-2",
+        "color_scheme": "inverse",
         "newsletter_enable": false,
         "newsletter_heading": "Subscribe to our emails",
         "enable_follow_on_shop": true,
