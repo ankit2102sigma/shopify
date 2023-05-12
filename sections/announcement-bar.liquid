@@ -13,7 +13,7 @@
   aria-label="{{ section.settings.accessibility_info | escape }}"
 >
   {%- if section.settings.auto_rotate  -%}
-    <div type='hidden' class="slideshow__controls slideshow__controls--top slider-buttons no-js-hidden{% if section.settings.show_text_below %} slideshow__controls--border-radius-mobile{% endif %}">
+    <div  class="slideshow__controls slideshow__controls--top slider-buttons no-js-hidden{% if section.settings.show_text_below %} slideshow__controls--border-radius-mobile{% endif %}">
       <button
         type="button"
         class="slider-button slider-button--prev"
@@ -213,6 +213,9 @@
     }
     .swiper-slide .right{
       text-align:rightt;
+    }
+    .slideshow__controls{
+      display:none;
     }
     {%- if  section.blocks.size < 2 %}
     . announcement-bar . swiper-button{display:none!important;}
