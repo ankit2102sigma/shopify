@@ -34,7 +34,7 @@
             "button_style_secondary": false,
             "box_align": "middle-center",
             "question": "I couldn't be happier with my recent laptop purchase from [Your Laptop Website]. The website offered a wide range of options, and the detailed product descriptions helped me make an informed decision. The laptop arrived on time and in perfect condition, and it has been a powerhouse ever since. Thank you, [Your Laptop Website], for providing such a fantastic product and service",
-            "answer": "<p>Sudhanshu<\/p>",
+            "answer": "<h4><strong>Sudhanshu<\/strong><\/h4>",
             "why-img": "shopify:\/\/shop_images\/the-man-in-the-hat.jpg",
             "show_text_box": true,
             "text_alignment": "center",
