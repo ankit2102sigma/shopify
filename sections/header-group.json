@@ -20,8 +20,8 @@
           "type": "slide",
           "settings": {
             "button_style_secondary": false,
-            "message": "50% off on every product",
-            "question": "Your Review",
+            "message": "",
+            "question": "20% off on every product Your Review",
             "answer": "<p>customer name<\/p>",
             "show_text_box": true,
             "text_alignment": "center"
