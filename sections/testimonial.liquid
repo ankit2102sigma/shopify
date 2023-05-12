@@ -33,20 +33,7 @@
 
 <script src="//cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const swiper = new Swiper('.swiper-container', {
-      {%- if section.settings.autoplay %}
-      autoplay: { delay: {{ section.settings.delay }} },
-      {%- endif -%}
-      loop: true,
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
-  });
-</script>
+
 
 
 
@@ -74,16 +61,45 @@
       "default": "center",
       "label": "t:sections.rich-text.settings.content_alignment.label"
     },
-             {
-      "type": "checkbox",
-      "id": "autoplay",
-      "label": "Autoplay"
+           {
+      "type": "select",
+      "id": "slider_visual",
+      "options": [
+        {
+          "value": "dots",
+          "label": "t:sections.slideshow.settings.slider_visual.options__2.label"
+        },
+        {
+          "value": "counter",
+          "label": "t:sections.slideshow.settings.slider_visual.options__1.label"
+        },
+        {
+          "value": "numbers",
+          "label": "t:sections.slideshow.settings.slider_visual.options__3.label"
+        }
+      ],
+      "default": "counter",
+      "label": "t:sections.slideshow.settings.slider_visual.label"
     },
     {
-      "type": "text",
-      "id": "delay",
-      "label": "Delay between transitions (in ms)",
-      "default": "5000"
+      "type": "checkbox",
+      "id": "auto_rotate",
+      "label": "t:sections.slideshow.settings.auto_rotate.label",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "change_slides_speed",
+      "min": 3,
+      "max": 9,
+      "step": 2,
+      "unit": "s",
+      "label": "t:sections.slideshow.settings.change_slides_speed.label",
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.animation.content"
     },
     {
       "type": "select",
