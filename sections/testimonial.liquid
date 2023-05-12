@@ -3,95 +3,50 @@
 
 <h1 style="text-align: center;">Testimonials</h1>
 <br>
-<slideshow-component
-  class="slider-mobile-gutter{"
-  role="region"
-  aria-roledescription="{{ 'sections.slideshow.carousel' | t }}"
-<!--   -->
->
-
-      <div class="slideshow__controls slideshow__controls--top slider-buttons no-js-hidden{% if section.settings.show_text_below %} slideshow__controls--border-radius-mobile{% endif %}">
-      <button
-        type="button"
-        class="slider-button slider-button--prev"
-        name="previous"
-        aria-label="{{ 'sections.slideshow.previous_slideshow' | t }}"
-        aria-controls="Slider-{{ section.id }}"
-      >
-        {% render 'icon-caret' %}
-      </button>
-      <div class="slider-counter slider-counter--{{ section.settings.slider_visual }}{% if section.settings.slider_visual == 'counter' or section.settings.slider_visual == 'numbers' %} caption{% endif %}">
-        {%- if section.settings.slider_visual == 'counter' -%}
-          <span class="slider-counter--current">1</span>
-          <span aria-hidden="true"> / </span>
-          <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
-          <span class="slider-counter--total">{{ section.blocks.size }}</span>
-        {%- else -%}
-          <div class="slideshow__control-wrapper">
-            {%- for block in section.blocks -%}
-              <button
-                class="slider-counter__link slider-counter__link--{{ section.settings.slider_visual }} link"
-                aria-label="{{ 'sections.slideshow.load_slide' | t }} {{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
-                aria-controls="Slider-{{ section.id }}"
-              >
-                {%- if section.settings.slider_visual == 'numbers' -%}
-                  {{ forloop.index -}}
-                {%- else -%}
-                  <span class="dot"></span>
-                {%- endif -%}
-              </button>
-            {%- endfor -%}
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+    {% for block in section.blocks %}
+    <div class="swiper-slide">
+      <section id="testimonial">
+        <div class="container">
+          <div class="quoteLoop">
+            <blockquote class="quote">
+              {% if block.settings.why-img %}
+              <img src="{{ block.settings.why-img | img_url: '200x200' }}" alt="">
+              {% endif %}
+              <h5>&nbsp;<br>
+                {{ block.settings.question }};<br>
+                <small>{{ block.settings.answer }}</small>
+              </h5>
+            </blockquote>
+            <hr>
           </div>
-        {%- endif -%}
-      </div>
-      <button
-        type="button"
-        class="slider-button slider-button--next"
-        name="next"
-        aria-label="{{ 'sections.slideshow.next_slideshow' | t }}"
-        aria-controls="Slider-{{ section.id }}"
-      >
-        {% render 'icon-caret' %}
-      </button>
-
-      {%- if section.settings.auto_rotate -%}
-        <button
-          type="button"
-          class="slideshow__autoplay slider-button no-js-hidden{% if section.settings.auto_rotate == false %} slideshow__autoplay--paused{% endif %}"
-          aria-label="{{ 'sections.slideshow.pause_slideshow' | t }}"
-        >
-          {%- render 'icon-pause' -%}
-          {%- render 'icon-play' -%}
-        </button>
-      {%- endif -%}
-    </div>
-    <noscript>
-
-  {% for block in section.blocks %}
-  <div class="swiper-slide">
-    <section id="testimonial">
-      <div class="container">
-        <div class="quoteLoop">
-          <blockquote class="quote">
-            {% if block.settings.why-img %}
-            <img src="{{ block.settings.why-img | img_url: '200x200' }}" alt="">
-            {% endif %}
-            <h5>&nbsp;<br>
-              {{ block.settings.question }};<br>
-              <small>{{ block.settings.answer }}</small>
-            </h5>
-          </blockquote>
-          <hr>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
+    {% endfor %}
   </div>
-  {% endfor %}
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
 </div>
-<div class="swiper-button-next"></div>
-<div class="swiper-button-prev"></div>
 
-</slideshow-component>
+
+<script src="//cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const swiper = new Swiper('.swiper-container', {
+      {%- if section.settings.autoplay %}
+      autoplay: { delay: {{ section.settings.delay }} },
+      {%- endif -%}
+      loop: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  });
+</script>
 
 
 
@@ -119,45 +74,16 @@
       "default": "center",
       "label": "t:sections.rich-text.settings.content_alignment.label"
     },
-           {
-      "type": "select",
-      "id": "slider_visual",
-      "options": [
-        {
-          "value": "dots",
-          "label": "t:sections.slideshow.settings.slider_visual.options__2.label"
-        },
-        {
-          "value": "counter",
-          "label": "t:sections.slideshow.settings.slider_visual.options__1.label"
-        },
-        {
-          "value": "numbers",
-          "label": "t:sections.slideshow.settings.slider_visual.options__3.label"
-        }
-      ],
-      "default": "counter",
-      "label": "t:sections.slideshow.settings.slider_visual.label"
-    },
-    {
+             {
       "type": "checkbox",
-      "id": "auto_rotate",
-      "label": "t:sections.slideshow.settings.auto_rotate.label",
-      "default": false
+      "id": "autoplay",
+      "label": "Autoplay"
     },
     {
-      "type": "range",
-      "id": "change_slides_speed",
-      "min": 3,
-      "max": 9,
-      "step": 2,
-      "unit": "s",
-      "label": "t:sections.slideshow.settings.change_slides_speed.label",
-      "default": 5
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.animation.content"
+      "type": "text",
+      "id": "delay",
+      "label": "Delay between transitions (in ms)",
+      "default": "5000"
     },
     {
       "type": "select",
@@ -242,4 +168,3 @@
   ]
 }
 {% endschema %}
-
