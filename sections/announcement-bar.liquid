@@ -1,3 +1,6 @@
+{{ 'announcement.js' | asset_url | script_tag }}
+
+
 {%- if  section.blocks.size > 0 and section.settings.show_announcement_bar -%}
   <div class="announcement-bar swiper-container">
     <div class=" messages swiper-wrapper">
