@@ -39,8 +39,8 @@
         "colorBackground": "#550808",
         "colorText": "#ffffff",
         "content_alignment": "center",
-        "auto_rotate": false,
-        "change_slides_speed": 5
+        "auto_rotate": true,
+        "change_slides_speed": 3
       }
     },
     "header": {
