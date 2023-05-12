@@ -5,30 +5,30 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "4c9571f3-145c-4cc3-a7b7-617c07362617": {
-          "type": "header",
+        "8b30c5f3-8b9d-4309-b602-97577f262074": {
+          "type": "slide",
           "settings": {
-            "message": "20% off on Diwali Dhamaka offer"
-          }
-        },
-        "40623a1b-2dd2-4bfe-b016-c623c1ecc35b": {
-          "type": "header",
-          "settings": {
-            "message": "10% for students on every laptop"
+            "button_style_secondary": false,
+            "message": "20% OFF From Diwali Dhamaka Offer",
+            "question": "Your Review",
+            "answer": "<p>customer name<\/p>",
+            "show_text_box": true,
+            "text_alignment": "center"
           }
         }
       },
       "block_order": [
-        "4c9571f3-145c-4cc3-a7b7-617c07362617",
-        "40623a1b-2dd2-4bfe-b016-c623c1ecc35b"
+        "8b30c5f3-8b9d-4309-b602-97577f262074"
       ],
       "settings": {
         "show_announcement_bar": true,
         "autoplay": true,
         "delay": "1000",
         "colorBackground": "#550808",
-        "colorText": "#fff",
-        "content_alignment": "center"
+        "colorText": "#ffffff",
+        "content_alignment": "center",
+        "auto_rotate": false,
+        "change_slides_speed": 5
       }
     },
     "header": {
