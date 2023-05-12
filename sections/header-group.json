@@ -9,8 +9,8 @@
           "type": "slide",
           "settings": {
             "button_style_secondary": false,
-            "message": "20% OFF From Diwali Dhamaka Offer",
-            "question": "Your Review",
+            "message": "",
+            "question": "20% OFF From Diwali Dhamaka Offer",
             "answer": "<p>customer name<\/p>",
             "show_text_box": true,
             "text_alignment": "center"
