@@ -15,10 +15,22 @@
             "show_text_box": true,
             "text_alignment": "center"
           }
+        },
+        "675c7079-40e8-496e-98c2-8a3ded4857c4": {
+          "type": "slide",
+          "settings": {
+            "button_style_secondary": false,
+            "message": "50% off on every product",
+            "question": "Your Review",
+            "answer": "<p>customer name<\/p>",
+            "show_text_box": true,
+            "text_alignment": "center"
+          }
         }
       },
       "block_order": [
-        "8b30c5f3-8b9d-4309-b602-97577f262074"
+        "8b30c5f3-8b9d-4309-b602-97577f262074",
+        "675c7079-40e8-496e-98c2-8a3ded4857c4"
       ],
       "settings": {
         "show_announcement_bar": true,
