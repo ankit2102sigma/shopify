@@ -1,9 +1,5 @@
-{% comment %} <script src="{{ 'slider.js' | asset_url }}" defer="defer"></script> {% endcomment %}
-{{ 'slider.js' | asset_url | script_tag: async: true }}
-
-
-
-
+<script src="{{ 'slider.js' | asset_url }}" defer="defer"></script>
+<!-- {{ 'slider.js' | asset_url | script_tag: async: true }} -->
 
 {%- if  section.blocks.size > 0 and section.settings.show_announcement_bar -%}
   <div class="announcement-bar swiper-container">
