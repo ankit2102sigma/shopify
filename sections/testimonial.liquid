@@ -3,8 +3,18 @@
 
 <h1 style="text-align: center;">Testimonials</h1>
 <br>
-<div class="swiper-container">
-  <div class="swiper-wrapper">
+<div class="slideshow__controls slideshow__controls--top slider-buttons">
+
+
+        <button
+          type="button"
+          class="slideshow__autoplay slider-button no-js-hidden{% if section.settings.auto_rotate == false %} slideshow__autoplay--paused{% endif %}"
+          aria-label="{{ 'sections.slideshow.pause_slideshow' | t }}"
+        >
+          {%- render 'icon-pause' -%}
+          {%- render 'icon-play' -%}
+        </button>
+ 
     {% for block in section.blocks %}
     <div class="swiper-slide">
       <section id="testimonial">
