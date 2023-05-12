@@ -131,7 +131,7 @@
 
         <div class="slideshow__text-wrapper banner__content banner__content--{{ block.settings.box_align }} page-width{% if block.settings.show_text_box == false %} banner--desktop-transparent{% endif %}">
           <div class="slideshow__text banner__box content-container content-container--full-width-mobile color-{{ block.settings.color_scheme }} gradient slideshow__text--{{ block.settings.text_alignment }} slideshow__text-mobile--{{ block.settings.text_alignment_mobile }}">
-            {%- if block.settings.heading != blank -%}
+         
               <section id="testimonial">
         <div class="container">
           <div class="quoteLoop">
@@ -148,16 +148,7 @@
           </div>
         </div>
       </section>
-              <h2 class="banner__heading inline-richtext {{ block.settings.heading_size }}">
-                {{ block.settings.heading }}
-              </h2>
-            {%- endif -%}
-            {%- if block.settings.subheading != blank -%}
 
-            {%- endif -%}
-            {%- if block.settings.button_label != blank -%}
-
-            {%- endif -%}
           </div>
         </div>
       </div>
