@@ -3,47 +3,47 @@
 
 <h1 style="text-align: center;">Testimonials</h1>
 <br>
+<slideshow-component
+  class="slider-mobile-gutter{"
+  role="region"
+  aria-roledescription="{{ 'sections.slideshow.carousel' | t }}"
+<!--   -->
+>
 <div class="slideshow__controls slideshow__controls--top slider-buttons">
+  <button
+    type="button"
+    class="slideshow__autoplay slider-button no-js-hidden"
+    aria-label="{{ 'sections.slideshow.pause_slideshow' | t }}"
+  >
+    {%- render 'icon-pause' -%}
+    {%- render 'icon-play' -%}
+  </button>
 
-
-        <button
-          type="button"
-          class="slideshow__autoplay slider-button no-js-hidden
-          aria-label="{{ 'sections.slideshow.pause_slideshow' | t }}"
-        >
-          {%- render 'icon-pause' -%}
-          {%- render 'icon-play' -%}
-        </button>
- 
-    {% for block in section.blocks %}
-    <div class="swiper-slide">
-      <section id="testimonial">
-        <div class="container">
-          <div class="quoteLoop">
-            <blockquote class="quote">
-              {% if block.settings.why-img %}
-              <img src="{{ block.settings.why-img | img_url: '200x200' }}" alt="">
-              {% endif %}
-              <h5>&nbsp;<br>
-                {{ block.settings.question }};<br>
-                <small>{{ block.settings.answer }}</small>
-              </h5>
-            </blockquote>
-            <hr>
-          </div>
+  {% for block in section.blocks %}
+  <div class="swiper-slide">
+    <section id="testimonial">
+      <div class="container">
+        <div class="quoteLoop">
+          <blockquote class="quote">
+            {% if block.settings.why-img %}
+            <img src="{{ block.settings.why-img | img_url: '200x200' }}" alt="">
+            {% endif %}
+            <h5>&nbsp;<br>
+              {{ block.settings.question }};<br>
+              <small>{{ block.settings.answer }}</small>
+            </h5>
+          </blockquote>
+          <hr>
         </div>
-      </section>
-    </div>
-    {% endfor %}
+      </div>
+    </section>
   </div>
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
+  {% endfor %}
 </div>
+<div class="swiper-button-next"></div>
+<div class="swiper-button-prev"></div>
 
-
-<script src="//cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
-
+</slideshow-component>
 
 
 
@@ -194,3 +194,4 @@
   ]
 }
 {% endschema %}
+
