@@ -69,7 +69,8 @@
   }
 
   .banner--small:not(.banner--adapt) {
-    min-height: 22rem;
+    min-height: 2rem;
+    height:200px
   }
 
   .banner--medium:not(.banner--adapt) {
