@@ -98,19 +98,88 @@
       "default": "center",
       "label": "t:sections.rich-text.settings.content_alignment.label"
     }
-  ],
-  "blocks": [
+  ],"blocks": [
     {
-      "type": "header",
-      "name": "Message",
+      "type": "slide",
+      "name": "t:sections.slideshow.blocks.slide.name",
+      "limit": 5,
       "settings": [
+
+       
         {
+          "type": "checkbox",
+          "id": "button_style_secondary",
+          "label": "t:sections.slideshow.blocks.slide.settings.secondary_style.label",
+          "default": false
+        },
+                {
           "id": "message",
           "type": "textarea",
           "label": "Announcements"
+        },
+   
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Description",
+          "default": "Your Review"
+        },
+
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Name",
+          "default": "<p>customer name</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "why-img",
+          "label": "Why Images"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_text_box",
+          "label": "t:sections.slideshow.blocks.slide.settings.show_text_box.label",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "t:sections.slideshow.blocks.slide.settings.text_alignment.option_1.label"
+            },
+            {
+              "value": "center",
+              "label": "t:sections.slideshow.blocks.slide.settings.text_alignment.option_2.label"
+            },
+            {
+              "value": "right",
+              "label": "t:sections.slideshow.blocks.slide.settings.text_alignment.option_3.label"
+            }
+          ],
+          "default": "center",
+          "label": "t:sections.slideshow.blocks.slide.settings.text_alignment.label"
+        }
+
+
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.slideshow.presets.name",
+      "blocks": [
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
         }
       ]
     }
   ]
 }
+
 {% endschema %}
