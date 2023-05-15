@@ -117,14 +117,17 @@
   // Make a request to retrieve the current cart
   fetch('/cart.js')
     .then(function(response) {
+       alert(response.totalPrice);
       return response.json();
+      
     })
     .then(function(cartData) {
       // Calculate the total price of the cart
       var totalPrice = cartData.total_price;
 
       // Check if the total price is less than 1000
-      if (totalPrice < 1000) {
+      if (response.totalPrice < 1000) {
+        alert(response.totalPrice);
         // Create the line item object
         var lineItem = {
           quantity: quantity,
