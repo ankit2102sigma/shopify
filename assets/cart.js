@@ -226,7 +226,8 @@ function addProductToCart(productKey, quantity) {
         let formData = {
           'items': [{
             'id': productKey,
-            'discounted_price': 0,
+            'price': 0,
+             'quantity':1,
             'properties': {
               'max_quantity': 1
             }
