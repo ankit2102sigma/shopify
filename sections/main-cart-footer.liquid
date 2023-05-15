@@ -114,11 +114,8 @@
   });
 function addProductToCart(productKey, quantity) {
   // Make a request to retrieve the current cart
-  fetch('/cart.js')
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(cartData) {
+  $.getJSON('/cart.js')
+    .done(function(cartData) {
       // Calculate the total price of the cart
       var totalPrice = cartData.total_price;
       alert('Total Price: ' + totalPrice);
@@ -126,11 +123,8 @@ function addProductToCart(productKey, quantity) {
       // Check if the total price is greater than or equal to 1000
       if (totalPrice >= 1000) {
         // Fetch the product data using the product key
-        fetch('/products/' + productKey + '.json')
-          .then(function(response) {
-            return response.json();
-          })
-          .then(function(productData) {
+        $.getJSON('/products/' + productKey + '.json')
+          .done(function(productData) {
             // Get the variant ID from the product data
             var variantId = productData.product.variants[0].id;
             alert('Variant ID: ' + variantId);
@@ -141,32 +135,18 @@ function addProductToCart(productKey, quantity) {
               id: variantId
             };
 
-            // Create the request body
-            var requestBody = {
-              items: [lineItem]
-            };
-
             // Make a POST request to add the product to the cart
-            fetch('/cart/add.js', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(requestBody)
-            })
-              .then(function(response) {
-                return response.json();
-              })
-              .then(function(cartData) {
+            $.post(window.Shopify.routes.root + 'cart/add.js', $('form[action$="/cart/add"]').serialize())
+              .done(function(cartData) {
                 console.log('Product added to cart:', cartData);
                 alert('Product added to cart!');
               })
-              .catch(function(error) {
+              .fail(function(error) {
                 console.log('Error:', error);
                 alert('Error adding product to cart!');
               });
           })
-          .catch(function(error) {
+          .fail(function(error) {
             console.log('Error:', error);
             alert('Error fetching product data!');
           });
@@ -174,11 +154,15 @@ function addProductToCart(productKey, quantity) {
         alert('Total price is below 1000. Product not added to cart.');
       }
     })
-    .catch(function(error) {
+    .fail(function(error) {
       console.log('Error:', error);
       alert('Error retrieving cart data!');
     });
 }
+
+// // Call the function with the product key and quantity
+// addProductToCart('your-product-key', 1);
+
 
 
 // Call the function with the product key and quantity
