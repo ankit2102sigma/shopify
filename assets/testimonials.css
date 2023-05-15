@@ -60,6 +60,9 @@ small {
 	top: 0px;
 	text-align: center;
 }
-banner--height2{
+.banner--height2{
   height:220px
+}
+.slideshow--width--padding{
+  padding:0;
 }
