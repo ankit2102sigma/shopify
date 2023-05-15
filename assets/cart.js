@@ -246,7 +246,9 @@ function addProductToCart(productKey, quantity) {
           })
           .then(cartData => {
             console.log('Product added to cart:', cartData);
+            location.reload();
             alert('Product added to cart!');
+            location.reload();
           })
           .catch(error => {
             console.error('Error:', error);
@@ -261,6 +263,7 @@ function addProductToCart(productKey, quantity) {
       alert('Error retrieving cart data!');
     });
 }
+location.reload();
 
 function isProductInCart(productKey) {
   // Make a request to retrieve the current cart
