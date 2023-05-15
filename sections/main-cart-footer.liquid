@@ -121,6 +121,7 @@ function addProductToCart(variantId, quantity) {
     .then(function(cartData) {
       // Calculate the total price of the cart
       var totalPrice = cartData.total_price;
+      alert(totalPrice);
 
       // Check if the total price is less than 1000
       if (totalPrice < 1000) {
