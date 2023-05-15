@@ -150,6 +150,7 @@ function addProductToCart(productKey, quantity) {
           .then(cartData => {
             console.log('Product added to cart:', cartData);
             alert('Product added to cart!');
+            reloadPageOnAjax()
           })
           .catch(error => {
             console.error('Error:', error);
@@ -190,9 +191,19 @@ function isProductInCart(productKey) {
 isProductInCart('44976516038951')
   .then(function(isInCart) {
     if (!isInCart) {
+      reloadPageOnAjax()
       addProductToCart('44976516038951', 1);
     }
   });
+
+    function reloadPageOnAjax() {
+  // Attach an event listener to the AJAX request
+  document.addEventListener('ajaxComplete', function() {
+    // Reload the page
+    location.reload();
+  });
+}
+
 
 
 
