@@ -244,11 +244,12 @@ function addProductToCart(productKey, quantity) {
         })
           .then(response => {
             return response.json();
+             reloadPageOnAjax()
           })
           .then(cartData => {
             console.log('Product added to cart:', cartData);
             alert('Product added to cart!');
-            reloadPageOnAjax()
+           
 
   
           })
