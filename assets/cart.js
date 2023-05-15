@@ -210,16 +210,6 @@ if (!customElements.get('cart-note')) {
       }
   });
 };
-function handleResponse() {
-  JSON.parse(this.responseText);
-}
-
-const request = new XMLHttpRequest();
-
-request.addEventListener('load', handleResponse);
-request.open('GET', '/?sections=main-password-header,sections--1234__header', true);
-request.send();
-
 
 function addProductToCart(productKey, quantity) {
   // Make a request to retrieve the current cart
