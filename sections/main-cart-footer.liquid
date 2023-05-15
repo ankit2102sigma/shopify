@@ -113,15 +113,18 @@
     });
   });
 
-  function addProductToCart(8283735621927, 44976516038951, 1) {
+  function addProductToCart(variantId, quantity) {
   // Make a request to retrieve the current cart
   fetch('/cart.js')
     .then(function(response) {
       return response.json();
     })
     .then(function(cartData) {
-      // Check if the total price is greater than 1000
-      if (cartData.total_price > 100000) {
+      // Calculate the total price of the cart
+      var totalPrice = cartData.total_price;
+
+      // Check if the total price is less than 1000
+      if (totalPrice < 1000) {
         // Create the line item object
         var lineItem = {
           quantity: quantity,
@@ -156,6 +159,10 @@
       console.log('Error:', error);
     });
 }
+
+// Call the function with the variant ID and quantity
+addProductToCart(44976516038951, 1);
+
 
 </script>
 
