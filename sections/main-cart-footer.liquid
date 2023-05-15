@@ -184,7 +184,7 @@ function isProductInCart(productKey) {
           return false; // Product is already in the cart
         }
       }
-      return ; // Product is not in the cart
+      return true ; // Product is not in the cart
     })
     .catch(function(error) {
       console.log('Error:', error);
