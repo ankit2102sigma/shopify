@@ -14,7 +14,7 @@ customElements.define('cart-remove-button', CartRemoveButton);
 
 class CartItems extends HTMLElement {
   constructor() {
-    location.reload();
+    
     super();
     this.lineItemStatusElement = document.getElementById('shopping-cart-line-item-status') || document.getElementById('CartDrawer-LineItemStatus');
 
