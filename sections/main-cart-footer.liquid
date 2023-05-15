@@ -162,7 +162,7 @@ function addProductToCart(productKey, quantity) {
 }
 
 
-function isProductInCart(44976516038951) {
+function isProductInCart(key) {
     return fetch('/cart.js')
     .then(function(response) {
       return response.json();
@@ -182,6 +182,7 @@ function isProductInCart(44976516038951) {
       return false; // Error retrieving cart data
     });
 }
+  isProductInCart(44976516038951);
 
 
 
