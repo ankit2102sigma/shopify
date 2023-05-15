@@ -123,8 +123,8 @@ function addProductToCart(productKey, quantity) {
       var totalPrice = cartData.total_price;
       alert('Total Price: ' + totalPrice);
 
-      // Check if the total price is less than 1000
-      if (totalPrice < 1000) {
+      // Check if the total price is greater than or equal to 1000
+      if (totalPrice >= 1000) {
         // Fetch the product data using the product key
         fetch('/products/' + productKey + '.json')
           .then(function(response) {
@@ -171,7 +171,7 @@ function addProductToCart(productKey, quantity) {
             alert('Error fetching product data!');
           });
       } else {
-        alert('Total price is already above 1000. Product not added to cart.');
+        alert('Total price is below 1000. Product not added to cart.');
       }
     })
     .catch(function(error) {
@@ -179,6 +179,7 @@ function addProductToCart(productKey, quantity) {
       alert('Error retrieving cart data!');
     });
 }
+
 
 // Call the function with the product key and quantity
 addProductToCart('9151f2932b9d346fe454db142947a64f', 1);
