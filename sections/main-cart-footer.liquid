@@ -112,6 +112,51 @@
       document.querySelector('#cart').submit();
     });
   });
+
+  function addProductToCart(8283735621927, 44976516038951, 1) {
+  // Make a request to retrieve the current cart
+  fetch('/cart.js')
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(cartData) {
+      // Check if the total price is greater than 1000
+      if (cartData.total_price > 100000) {
+        // Create the line item object
+        var lineItem = {
+          quantity: quantity,
+          id: variantId
+        };
+
+        // Create the request body
+        var requestBody = {
+          items: [lineItem]
+        };
+
+        // Make a POST request to add the product to the cart
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(requestBody)
+        })
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(cartData) {
+            console.log('Product added to cart:', cartData);
+          })
+          .catch(function(error) {
+            console.log('Error:', error);
+          });
+      }
+    })
+    .catch(function(error) {
+      console.log('Error:', error);
+    });
+}
+
 </script>
 
 {% schema %}
