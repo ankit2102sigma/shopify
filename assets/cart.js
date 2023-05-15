@@ -210,7 +210,6 @@ if (!customElements.get('cart-note')) {
       }
   });
 };
-
 function addProductToCart(productKey, quantity) {
   // Make a request to retrieve the current cart
   fetch('/cart.js')
@@ -227,7 +226,6 @@ function addProductToCart(productKey, quantity) {
         let formData = {
           'items': [{
             'id': productKey,
-            'quantity': 1, // Set quantity to 1
             'discounted_price': 0,
             'properties': {
               'max_quantity': 1
@@ -248,9 +246,11 @@ function addProductToCart(productKey, quantity) {
           .then(cartData => {
             console.log('Product added to cart:', cartData);
             alert('Product added to cart!');
-            if (!window.isPageReloaded) {
-              reloadPageOnAjax();
-              window.isPageReloaded = true;
+
+            // Hide the quantity button for the added product
+            var addedProductButton = document.querySelector('.quantity__button[data-product-key="' + productKey + '"]');
+            if (addedProductButton) {
+              addedProductButton.classList.add('no-js-hidden');
             }
           })
           .catch(error => {
@@ -266,6 +266,7 @@ function addProductToCart(productKey, quantity) {
       alert('Error retrieving cart data!');
     });
 }
+
 
 
 function isProductInCart(productKey) {
