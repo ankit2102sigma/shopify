@@ -127,30 +127,34 @@ function addProductToCart(productKey, quantity) {
 
       // Check if the total price is greater than or equal to 1000
       if (totalPrice >= 1000) {
-    let formData = {
-           'items': [{
-            'id': 44976516038951,
-              'discounted_price': 0,
+        let formData = {
+          'items': [{
+            'id': productKey,
+            'discounted_price': 0,
             'properties': {
               'max_quantity': 1
             }
- 
-            }]
-          };
-          fetch(window.Shopify.routes.root + 'cart/add.js', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-          })
+          }]
+        };
+
+        fetch(window.Shopify.routes.root + 'cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        })
           .then(response => {
             return response.json();
           })
-          .catch((error) => {
+          .then(cartData => {
+            console.log('Product added to cart:', cartData);
+            alert('Product added to cart!');
+          })
+          .catch(error => {
             console.error('Error:', error);
+            alert('Error adding product to cart!');
           });
-
       } else {
         alert('Total price is below 1000. Product not added to cart.');
       }
@@ -161,9 +165,9 @@ function addProductToCart(productKey, quantity) {
     });
 }
 
-
 function isProductInCart(productKey) {
-    return fetch('/cart.js')
+  // Make a request to retrieve the current cart
+  return fetch('/cart.js')
     .then(function(response) {
       return response.json();
     })
@@ -172,7 +176,7 @@ function isProductInCart(productKey) {
       var items = cartData.items;
       for (var i = 0; i < items.length; i++) {
         if (items[i].key === productKey) {
-        addProductToCart('44976516038951', 1);
+          return true; // Product is already in the cart
         }
       }
       return false; // Product is not in the cart
@@ -182,7 +186,13 @@ function isProductInCart(productKey) {
       return false; // Error retrieving cart data
     });
 }
-  isProductInCart(44976516038951);
+
+isProductInCart('44976516038951')
+  .then(function(isInCart) {
+    if (!isInCart) {
+      addProductToCart('44976516038951', 1);
+    }
+  });
 
 
 
