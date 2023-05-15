@@ -67,3 +67,6 @@ small {
   padding:0px;
 
 }
+..banner__box{
+  padding:0 !important;
+}
