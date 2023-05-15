@@ -274,6 +274,7 @@ function isProductInCart(productKey) {
     })
     .then(function(cartData) {
       // Check if the product with the given key is in the cart
+      console.log("data", cartData)
       for (i in cartData.items) {
         if (cartData.items[i].key === productKey) {
           alert(cartData.items[i].key);
