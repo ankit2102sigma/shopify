@@ -113,6 +113,7 @@
     });
   });
 
+  
 function addProductToCart(productKey, quantity) {
   // Make a request to retrieve the current cart
   fetch('/cart.js')
@@ -124,35 +125,30 @@ function addProductToCart(productKey, quantity) {
       var totalPrice = cartData.total_price;
       alert('Total Price: ' + totalPrice);
 
-      // Check if the total price is less than 1000
-      if (totalPrice < 1000) {
-        let formData = {
-          'items': [{
-            'id': productKey,
-            'quantity': quantity
-          }]
-        };
-
-        fetch(window.Shopify.routes.root + 'cart/add.js', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(formData)
-        })
+      // Check if the total price is greater than or equal to 1000
+      if (totalPrice >= 1000) {
+    let formData = {
+           'items': [{
+            'id': 44976516038951,
+            'quantity': 2
+            }]
+          };
+          fetch(window.Shopify.routes.root + 'cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+          })
           .then(response => {
             return response.json();
           })
-          .then(cartData => {
-            console.log('Product added to cart:', cartData);
-            alert('Product added to cart!');
-          })
-          .catch(error => {
+          .catch((error) => {
             console.error('Error:', error);
-            alert('Error adding product to cart!');
           });
+
       } else {
-        alert('Total price is greater than or equal to 1000. Product not added to cart.');
+        alert('Total price is below 1000. Product not added to cart.');
       }
     })
     .catch(function(error) {
@@ -161,9 +157,9 @@ function addProductToCart(productKey, quantity) {
     });
 }
 
+
 // Call the function with the product key and quantity
 addProductToCart('44976516038951', 1);
-
 
 
 
