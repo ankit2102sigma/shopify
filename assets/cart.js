@@ -210,3 +210,100 @@ if (!customElements.get('cart-note')) {
       }
   });
 };
+
+function addProductToCart(productKey, quantity) {
+  // Make a request to retrieve the current cart
+  fetch('/cart.js')
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(cartData) {
+      // Calculate the total price of the cart
+      var totalPrice = cartData.total_price;
+      alert('Total Price: ' + totalPrice);
+
+      // Check if the total price is greater than or equal to 1000
+      if (totalPrice >= 1000) {
+        let formData = {
+          'items': [{
+            'id': productKey,
+            'quantity': 1, // Set quantity to 1
+            'discounted_price': 0,
+            'properties': {
+              'max_quantity': 1
+            }
+          }]
+        };
+
+        fetch(window.Shopify.routes.root + 'cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        })
+          .then(response => {
+            return response.json();
+          })
+          .then(cartData => {
+            console.log('Product added to cart:', cartData);
+            alert('Product added to cart!');
+            if (!window.isPageReloaded) {
+              reloadPageOnAjax();
+              window.isPageReloaded = true;
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            alert('Error adding product to cart!');
+          });
+      } else {
+        alert('Total price is below 1000. Product not added to cart.');
+      }
+    })
+    .catch(function(error) {
+      console.log('Error:', error);
+      alert('Error retrieving cart data!');
+    });
+}
+
+
+function isProductInCart(productKey) {
+  // Make a request to retrieve the current cart
+  return fetch('/cart.js')
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(cartData) {
+      // Check if the product with the given key is in the cart
+      var items = cartData.items;
+      for (var i = 0; i < items.length; i++) {
+        if (items[i].key === productKey) {
+          alert(items[i].key);
+          return true; // Product is already in the cart
+        }
+      }
+      return false; // Product is not in the cart
+    })
+    .catch(function(error) {
+      console.log('Error:', error);
+      return false; // Error retrieving cart data
+    });
+}
+
+isProductInCart('44976516038951')
+  .then(function(isInCart) {
+    if (!isInCart) {
+      addProductToCart('44976516038951', 1);
+    }
+  });
+
+function reloadPageOnAjax() {
+  // Attach an event listener to the AJAX request
+  document.addEventListener('ajaxComplete', function() {
+    // Reload the page
+    location.reload();
+  });
+}
+
+
