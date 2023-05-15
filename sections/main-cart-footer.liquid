@@ -129,6 +129,7 @@ function addProductToCart(productKey, quantity) {
         let formData = {
           'items': [{
             'id': productKey,
+            'quantity': 1, // Set quantity to 1
             'discounted_price': 0,
             'properties': {
               'max_quantity': 1
@@ -167,6 +168,7 @@ function addProductToCart(productKey, quantity) {
       alert('Error retrieving cart data!');
     });
 }
+
 
 function isProductInCart(productKey) {
   // Make a request to retrieve the current cart
