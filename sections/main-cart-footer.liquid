@@ -112,7 +112,7 @@
       document.querySelector('#cart').submit();
     });
   });
-function addProductToCart(variantId, quantity) {
+function addProductToCart(productKey, quantity) {
   // Make a request to retrieve the current cart
   fetch('/cart.js')
     .then(function(response) {
@@ -121,35 +121,46 @@ function addProductToCart(variantId, quantity) {
     .then(function(cartData) {
       // Calculate the total price of the cart
       var totalPrice = cartData.total_price;
-      alert(totalPrice);
 
       // Check if the total price is less than 1000
       if (totalPrice < 1000) {
-        alert(totalPrice);
-        // Create the line item object
-        var lineItem = {
-          quantity: quantity,
-          id: variantId
-        };
-
-        // Create the request body
-        var requestBody = {
-          items: [lineItem]
-        };
-
-        // Make a POST request to add the product to the cart
-        fetch('/cart/add.js', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(requestBody)
-        })
+        // Fetch the product data using the product key
+        fetch('/products/' + productKey + '.json')
           .then(function(response) {
             return response.json();
           })
-          .then(function(cartData) {
-            console.log('Product added to cart:', cartData);
+          .then(function(productData) {
+            // Get the variant ID from the product data
+            var variantId = productData.product.variants[0].id;
+
+            // Create the line item object
+            var lineItem = {
+              quantity: quantity,
+              id: variantId
+            };
+
+            // Create the request body
+            var requestBody = {
+              items: [lineItem]
+            };
+
+            // Make a POST request to add the product to the cart
+            fetch('/cart/add.js', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(requestBody)
+            })
+              .then(function(response) {
+                return response.json();
+              })
+              .then(function(cartData) {
+                console.log('Product added to cart:', cartData);
+              })
+              .catch(function(error) {
+                console.log('Error:', error);
+              });
           })
           .catch(function(error) {
             console.log('Error:', error);
@@ -161,12 +172,9 @@ function addProductToCart(variantId, quantity) {
     });
 }
 
-// Call the function with the variant ID and quantity
-  addProductToCart(44976528884007, 1);
+// Call the function with the product key and quantity
+addProductToCart('44976548741415', 1);
 
-
-// // Call the function with the variant ID and quantity
-// addProductToCart(44976516038951, 1);
 
 
 </script>
