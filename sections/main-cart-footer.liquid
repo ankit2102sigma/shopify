@@ -162,7 +162,7 @@ function addProductToCart(productKey, quantity) {
 }
 
 
-function isProductInCart(key) {
+function isProductInCart(productKey) {
     return fetch('/cart.js')
     .then(function(response) {
       return response.json();
