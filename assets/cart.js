@@ -277,7 +277,7 @@ function isProductInCart(productKey) {
       console.log("data", cartData)
       for (i in cartData.items) {
         console.log("key", cartData.items[i].variant_id)
-        if (cartData.items[i].key == 44976516038951) {
+        if (cartData.items[i].key == productKey) {
           alert(cartData.items[i].key);
           return true; // Product is already in the cart
         }
