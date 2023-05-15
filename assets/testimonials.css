@@ -61,8 +61,9 @@ small {
 	text-align: center;
 }
 .banner--height2{
-  height:220px
+  height:50px
 }
 .slideshow--width--padding{
   padding:0;
+  margin:0;
 }
