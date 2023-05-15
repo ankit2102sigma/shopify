@@ -274,11 +274,11 @@ function isProductInCart(productKey) {
     })
     .then(function(cartData) {
       // Check if the product with the given key is in the cart
-      console.log("data", cartData)
-      for (i in cartData.items) {
-        console.log("key", cartData.items[i].variant_id)
-        if (cartData.items[i].key == productKey) {
-          alert(cartData.items[i].key);
+      console.log("data", cartData);
+      for (var i = 0; i < cartData.items.length; i++) {
+        console.log("variant_id", cartData.items[i].variant_id);
+        if (cartData.items[i].variant_id == productKey) {
+          alert(cartData.items[i].variant_id);
           return true; // Product is already in the cart
         }
       }
@@ -296,6 +296,7 @@ isProductInCart('44976516038951')
       addProductToCart('44976516038951', 1);
     }
   });
+
 
 document.addEventListener('ajaxComplete', function() {
   location.reload();
