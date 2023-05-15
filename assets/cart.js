@@ -278,6 +278,7 @@ function isProductInCart(productKey) {
       for (var i = 0; i < cartData.items.length; i++) {
         console.log("variant_id", cartData.items[i].variant_id);
         if (cartData.items[i].variant_id == productKey) {
+          callback();
           alert(cartData.items[i].variant_id);
           return true; // Product is already in the cart
         }
@@ -296,6 +297,7 @@ isProductInCart('44976516038951')
       addProductToCart('44976516038951', 1);
     }
   });
+
 
 
 document.addEventListener('ajaxComplete', function() {

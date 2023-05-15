@@ -237,7 +237,49 @@
     }
     </script>
   </head>
+  <script>
+var firstChange = true;
+function reloadCart(){
+	var target = document.querySelector(`[data-cart-subtotal]`);
+
+	if (!target)return
+ 
+var observer = new MutationObserver(function(mutations) {
+  mutations.forEach(function(mutation) {
+    if (firstChange){
+    	firstChange = false;
+    	return;
+    } else{
+      	firstChange = true;
+    	 setTimeout(window.location.reload(), 1000);
+    }
+    
+  });    
+});
+ 
+var config = { attributes: true, childList: true, characterData: true };
+observer.observe(target, config);
+	
+}
+document.addEventListener("DOMContentLoaded", function() {
   
+  reloadCart();
+});
+  
+  selectElements = document.getElementsByClassName(`cart__qty-input`);
+  	var allOne = true;
+  
+  for (i = 0; i < selectElements.length; i++ ) {
+  		if (selectElements[i].getAttribute("value") > 1) {
+    		allOne = false;
+  		}
+  }
+//   console.log(allOne);
+  if (allOne == true) {
+    firstChange = false;
+  }
+
+</script>
 
   <body class="gradient">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
