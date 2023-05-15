@@ -130,7 +130,11 @@ function addProductToCart(productKey, quantity) {
     let formData = {
            'items': [{
             'id': 44976516038951,
-            'quantity': 2
+              'price': 0,
+            'properties': {
+              'max_quantity': 1
+            }
+ 
             }]
           };
           fetch(window.Shopify.routes.root + 'cart/add.js', {
