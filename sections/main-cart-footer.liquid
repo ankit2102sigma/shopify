@@ -181,10 +181,10 @@ function isProductInCart(productKey) {
       var items = cartData.items;
       for (var i = 0; i < items.length; i++) {
         if (items[i].key === productKey) {
-          return true; // Product is already in the cart
+          return false; // Product is already in the cart
         }
       }
-      return false; // Product is not in the cart
+      return ; // Product is not in the cart
     })
     .catch(function(error) {
       console.log('Error:', error);
