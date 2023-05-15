@@ -248,7 +248,7 @@ function addProductToCart(productKey, quantity) {
             console.log('Product added to cart:', cartData);
             // location.reload();
             alert('Product added to cart!');
-            location.reload();
+            // location.reload();
           })
           .catch(error => {
             console.error('Error:', error);
