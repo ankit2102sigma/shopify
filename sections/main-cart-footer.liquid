@@ -162,8 +162,27 @@ function addProductToCart(productKey, quantity) {
 }
 
 
-// Call the function with the product key and quantity
-addProductToCart('44976516038951', 1);
+function isProductInCart(44976516038951) {
+    return fetch('/cart.js')
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(cartData) {
+      // Check if the product with the given key is in the cart
+      var items = cartData.items;
+      for (var i = 0; i < items.length; i++) {
+        if (items[i].key === productKey) {
+        addProductToCart('44976516038951', 1);
+        }
+      }
+      return false; // Product is not in the cart
+    })
+    .catch(function(error) {
+      console.log('Error:', error);
+      return false; // Error retrieving cart data
+    });
+}
+
 
 
 
