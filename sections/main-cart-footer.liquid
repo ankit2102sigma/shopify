@@ -114,55 +114,46 @@
   });
 function addProductToCart(productKey, quantity) {
   // Make a request to retrieve the current cart
-  $.getJSON('/cart.js')
-    .done(function(cartData) {
+  fetch('/cart.js')
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(cartData) {
       // Calculate the total price of the cart
       var totalPrice = cartData.total_price;
       alert('Total Price: ' + totalPrice);
 
       // Check if the total price is greater than or equal to 1000
       if (totalPrice >= 1000) {
-        // Fetch the product data using the product key
-        $.getJSON('/products/' + productKey + '.json')
-          .done(function(productData) {
-            // Get the variant ID from the product data
-            var variantId = productData.product.variants[0].id;
-            alert('Variant ID: ' + variantId);
-
-            // Create the line item object
-            var lineItem = {
-              quantity: quantity,
-              id: variantId
-            };
-
-            // Make a POST request to add the product to the cart
-            $.post(window.Shopify.routes.root + 'cart/add.js', $('form[action$="/cart/add"]').serialize())
-              .done(function(cartData) {
-                console.log('Product added to cart:', cartData);
-                alert('Product added to cart!');
-              })
-              .fail(function(error) {
-                console.log('Error:', error);
-                alert('Error adding product to cart!');
-              });
+    let formData = {
+           'items': [{
+            'id': 44976516038951,
+            'quantity': 2
+            }]
+          };
+          fetch(window.Shopify.routes.root + 'cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
           })
-          .fail(function(error) {
-            console.log('Error:', error);
-            alert('Error fetching product data!');
+          .then(response => {
+            return response.json();
+          })
+          .catch((error) => {
+            console.error('Error:', error);
           });
+
       } else {
         alert('Total price is below 1000. Product not added to cart.');
       }
     })
-    .fail(function(error) {
+    .catch(function(error) {
       console.log('Error:', error);
       alert('Error retrieving cart data!');
     });
 }
-
-// // Call the function with the product key and quantity
-// addProductToCart('your-product-key', 1);
-
 
 
 // Call the function with the product key and quantity
