@@ -117,7 +117,7 @@
   // Make a request to retrieve the current cart
   fetch('/cart.js')
     .then(function(response) {
-       alert(response.totalPrice);
+       alert(response.items_subtotal_price);
       return response.json();
       
     })
