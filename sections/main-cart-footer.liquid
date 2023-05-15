@@ -124,6 +124,7 @@ function addProductToCart(productKey, quantity) {
       // Calculate the total price of the cart
       var totalPrice = cartData.total_price;
       alert('Total Price: ' + totalPrice);
+      reloadPageOnAjax()
 
       // Check if the total price is greater than or equal to 1000
       if (totalPrice >= 1000) {
