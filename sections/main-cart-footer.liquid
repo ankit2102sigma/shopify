@@ -112,22 +112,19 @@
       document.querySelector('#cart').submit();
     });
   });
-
-  function addProductToCart(variantId, quantity) {
+function addProductToCart(variantId, quantity) {
   // Make a request to retrieve the current cart
   fetch('/cart.js')
     .then(function(response) {
-          console.log("data", response)
       return response.json();
-      
     })
     .then(function(cartData) {
       // Calculate the total price of the cart
       var totalPrice = cartData.total_price;
 
       // Check if the total price is less than 1000
-      if (response.totalPrice < 1000) {
-        alert(response.totalPrice);
+      if (totalPrice < 1000) {
+        alert(totalPrice);
         // Create the line item object
         var lineItem = {
           quantity: quantity,
@@ -165,6 +162,10 @@
 
 // Call the function with the variant ID and quantity
 addProductToCart(44976516038951, 1);
+
+
+// // Call the function with the variant ID and quantity
+// addProductToCart(44976516038951, 1);
 
 
 </script>
