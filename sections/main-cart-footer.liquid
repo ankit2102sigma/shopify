@@ -113,7 +113,6 @@
     });
   });
 
-  
 function addProductToCart(productKey, quantity) {
   // Make a request to retrieve the current cart
   fetch('/cart.js')
@@ -124,7 +123,6 @@ function addProductToCart(productKey, quantity) {
       // Calculate the total price of the cart
       var totalPrice = cartData.total_price;
       alert('Total Price: ' + totalPrice);
-      reloadPageOnAjax()
 
       // Check if the total price is greater than or equal to 1000
       if (totalPrice >= 1000) {
@@ -151,7 +149,10 @@ function addProductToCart(productKey, quantity) {
           .then(cartData => {
             console.log('Product added to cart:', cartData);
             alert('Product added to cart!');
-            reloadPageOnAjax()
+            if (!window.isPageReloaded) {
+              reloadPageOnAjax();
+              window.isPageReloaded = true;
+            }
           })
           .catch(error => {
             console.error('Error:', error);
@@ -192,12 +193,11 @@ function isProductInCart(productKey) {
 isProductInCart('44976516038951')
   .then(function(isInCart) {
     if (!isInCart) {
-      reloadPageOnAjax()
       addProductToCart('44976516038951', 1);
     }
   });
 
-    function reloadPageOnAjax() {
+function reloadPageOnAjax() {
   // Attach an event listener to the AJAX request
   document.addEventListener('ajaxComplete', function() {
     // Reload the page
