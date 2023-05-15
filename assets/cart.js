@@ -248,12 +248,9 @@ function addProductToCart(productKey, quantity) {
           .then(cartData => {
             console.log('Product added to cart:', cartData);
             alert('Product added to cart!');
+            reloadPageOnAjax()
 
-            // Hide the quantity button for the added product
-            var addedProductButton = document.querySelector('.quantity__button[data-product-key="' + productKey + '"]');
-            if (addedProductButton) {
-              addedProductButton.classList.add('no-js-hidden');
-            }
+  
           })
           .catch(error => {
             console.error('Error:', error);
@@ -301,12 +298,15 @@ isProductInCart('44976516038951')
     }
   });
 
+
 function reloadPageOnAjax() {
   // Attach an event listener to the AJAX request
-  document.addEventListener('ajaxComplete', function() {
-    // Reload the page
-    location.reload();
+  document.addEventListener('readystatechange', function() {
+    // Check if the request is complete
+    if (this.readyState === 4) {
+      // Reload the page
+      location.reload();
+    }
   });
 }
-
 
