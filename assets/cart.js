@@ -292,16 +292,9 @@ isProductInCart('44976516038951')
     }
   });
 
-reloadPageOnAjax();
+document.addEventListener('ajaxComplete', function() {
+  // Reload the page
+  location.reload();
+});
 
-function reloadPageOnAjax() {
-  // Attach an event listener to the AJAX request
-  document.addEventListener('readystatechange', function() {
-    // Check if the request is complete
-    if (this.readyState === 4) {
-      // Reload the page
-      location.reload();
-    }
-  });
-}
 
