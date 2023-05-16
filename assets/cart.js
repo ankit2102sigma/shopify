@@ -230,7 +230,7 @@ function addProductToCart(productKey, quantity) {
           'items': [{
             'id': productKey,
             'price': 0,
-            'quantity': 1
+            'quantity': 1,
             'properties': {
               'max_quantity': 1
             }
