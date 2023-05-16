@@ -4,9 +4,7 @@
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'component-discounts.css' | asset_url | stylesheet_tag }}
 {{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
-<script type="module">
-  import '/path/to/cart.js.liquid';
-</script>
+<script src="{{ 'cart.js.liquid' | asset_url }}" defer="defer"></script>
 
 
 {%- style -%}
