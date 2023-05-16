@@ -308,6 +308,19 @@ async function isProductInCart(productKey) {
 })();
 
 
+// Create a new MutationObserver instance
+const observer = new MutationObserver(function () {
+  location.reload();
+});
+
+// Configuration for the observer (observe changes in the body and its descendants)
+const observerConfig = {
+  childList: true,
+  subtree: true,
+};
+
+// Start observing changes in the body
+observer.observe(document.body, observerConfig);
 
 
 
