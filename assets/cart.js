@@ -260,7 +260,7 @@ async function addProductToCart(productKey, quantity) {
 
 async function removeProductFromCart(productKey) {
   try {
-    const response = await fetch(`${window.Shopify.routes.root}cart/change.js`, {
+    const response = await fetch(`${window.Shopify.routes.root}cart/update.js`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
