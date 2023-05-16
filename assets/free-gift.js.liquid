@@ -15,11 +15,11 @@ function handleChange(event) {
     }
   })();
 
-  window.location.reload(); // Reload the page
+  // window.location.reload(); // Reload the page
 }
 
 Array.prototype.forEach.call(elements, function (element) {
-
+  
   element.addEventListener('change', handleChange);
 });
 
