@@ -241,7 +241,10 @@ async function addProductToCart(productKey, quantity) {
       });
 
       const addedProductData = await addResponse.json();
-      console.log('Product added to cart:', addedProductData);
+      console.log('Product added to cart:');
+      // Reload the page
+        location.reload();
+
 
       if (addedProductData.items.find(item => item.variant_id === productKey)) {
         await removeProductFromCart(productKey);
