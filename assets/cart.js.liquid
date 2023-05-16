@@ -8,7 +8,7 @@ function handleChange(event) {
   
   // Add your logic here based on the input value change
   // For example, you can call the necessary functions or perform other actions.
-  // (async function () {
+  (async function () {
     const isInCart = await isProductInCart('45057131315495');
     if (!isInCart) {
       await addProductToCart('45057131315495', 1);
