@@ -20,13 +20,6 @@ function handleChange(event) {
       }
     }
   })();
-
-  if (event.target.value !== event.target.defaultValue) {
-    // Add a free product to the cart if the quantity is changed
-    await addFreeProduct(productId);
-    // Refresh the page
-    location.reload();
-  }
 }
 
 // Attach the change event listener to each element using map
@@ -53,31 +46,34 @@ async function addProductToCart(productKey, quantity) {
         }]
       };
 
-      const addResponse = await fetch(`<span class="math-inline">\{window\.Shopify\.routes\.root\}cart/add\.js\`, \{
-method\: \'POST\',
-headers\: \{
-\'Content\-Type\'\: \'application/json\'
-\},
-body\: JSON\.stringify\(formData\)</0\>
-\}\);
-const addedProductData \= await addResponse\.json\(\);
-console\.log\(\'Product added to cart\:\', addedProductData\);
-// Reload the page
-//location\.reload\(\);
-if \(addedProductData\.items\.find\(item \=\> item\.variant\_id \=\=\= productKey\)\) \{
-await removeProductFromCart\(productKey\);
-\}
-\} else \{
-console\.log\(\'Total price is below 1000\. Product not added to cart\.\'\);
-\}
-\} catch \(error\) \{
-console\.error\(\'Error\:\', error\);
-alert\(\'Error adding product to cart\!\'\);
-\}
-\}
-async function removeProductFromCart\(productKey\) \{
-try \{
-const response \= await fetch\(\`</span>{window.Shopify.routes.root}cart/change.js`, {
+      const addResponse = await fetch(`${window.Shopify.routes.root}cart/add.js`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const addedProductData = await addResponse.json();
+      console.log('Product added to cart:', addedProductData);
+      // Reload the page
+      location.reload();
+
+      if (addedProductData.items.find(item => item.variant_id === productKey)) {
+        await removeProductFromCart(productKey);
+      }
+    } else {
+      console.log('Total price is below 1000. Product not added to cart.');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Error adding product to cart!');
+  }
+}
+
+async function removeProductFromCart(productKey) {
+  try {
+    const response = await fetch(`${window.Shopify.routes.root}cart/change.js`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -91,7 +87,7 @@ const response \= await fetch\(\`</span>{window.Shopify.routes.root}cart/change.
     const removedProductData = await response.json();
     console.log('Product removed from cart:', removedProductData);
     alert('Product removed from cart!');
-    //reloadPage();
+    reloadPage();
   } catch (error) {
     console.error('Error:', error);
     alert('Error removing product from cart!');
@@ -101,7 +97,6 @@ const response \= await fetch\(\`</span>{window.Shopify.routes.root}cart/change.
 function reloadPage() {
   location.reload();
 }
-
 
 async function isProductInCart(productKey) {
   try {
