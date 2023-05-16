@@ -1,14 +1,8 @@
-// Get all elements with the specified class
 const elements = document.getElementsByClassName('quantity__input');
 
-// Define the change event handler
 function handleChange(event) {
-    
-  // Code to execute when the input value changes
   console.log('Input value changed:', event.target.value);
   
-  // Add your logic here based on the input value change
-  // For example, you can call the necessary functions or perform other actions.
   (async function () {
     const isInCart = await isProductInCart('45057131315495');
     if (!isInCart) {
@@ -22,11 +16,10 @@ function handleChange(event) {
   })();
 }
 
-// Attach the change event listener to each element using map
-Array.from(elements).map(function (element) {
-
+Array.prototype.forEach.call(elements, function (element) {
   element.addEventListener('change', handleChange);
 });
+
 
 async function addProductToCart(productKey, quantity) {
   try {
