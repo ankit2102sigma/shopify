@@ -254,7 +254,8 @@ function addProductToCart(productKey, quantity) {
                 return response.json();
               })
               .then(function(updatedCartData) {
-                if (updatedCartData.total_price < 100000) {
+                 var totalPrice2 = updatedCartData.total_price;
+                if (totalPrice2 < 100000) {
                   removeProductFromCart(productKey);
                 }
               })
