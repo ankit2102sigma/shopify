@@ -215,14 +215,12 @@ if (!customElements.get('cart-note')) {
 
 async function addProductToCart(productKey, quantity) {
   try {
-    // Make a request to retrieve the current cart
+
     const response = await fetch('/cart.js');
     const cartData = await response.json();
-
-    // Calculate the total price of the cart
     const totalPrice = cartData.total_price;
 
-    if (totalPrice >= 1000) {
+    if (totalPrice >= 1000000) {
       const formData = {
         'items': [{
           'id': productKey,
@@ -281,7 +279,6 @@ async function removeProductFromCart(productKey) {
 }
 
 function reloadPage() {
-  // Reload the page
   location.reload();
 }
 
@@ -289,14 +286,17 @@ async function isProductInCart(productKey) {
   try {
     const response = await fetch('/cart.js');
     const cartData = await response.json();
+    const totalPrice = cartData.total_price;
 
     for (let i = 0; i < cartData.items.length; i++) {
       if (cartData.items[i].variant_id == productKey) {
         alert(cartData.items[i].variant_id);
-        return true; // Product is already in the cart
-      }
+            if(totalPrice<100000){
+              removeProductFromCart(productKey)
+                }
+        return true; 
     }
-    return false; // Product is not in the cart
+    return false; 
   } catch (error) {
     console.log('Error:', error);
     return false; // Error retrieving cart data
