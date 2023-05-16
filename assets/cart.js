@@ -277,7 +277,8 @@ function isProductInCart(productKey) {
       for (var i = 0; i < cartData.items.length; i++) {
         console.log("variant_id", cartData.items[i].variant_id);
         if (cartData.items[i].variant_id == productKey) {
-          // alert(cartData.items[i].variant_id);
+          callback();
+          alert(cartData.items[i].variant_id);
           return true; // Product is already in the cart
         }
       }
