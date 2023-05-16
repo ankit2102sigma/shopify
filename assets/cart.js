@@ -333,7 +333,7 @@ isProductInCart('45057131315495')
 
 document.body.addEventListener('change', function() {
     reloadPage();
-  )};
+});
 
 
 
