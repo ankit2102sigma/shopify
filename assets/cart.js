@@ -292,8 +292,14 @@ async function isProductInCart(productKey) {
 
     for (let i = 0; i < cartData.items.length; i++) {
       if (cartData.items[i].variant_id == productKey) {
+        if(cartData.total_price>=100000){
+            return true; // Product is already in the cart
+          }
+        else{
+          await removeProductFromCart('45057131315495', 1);
+        }
      
-        return true; // Product is already in the cart
+      
       }
     }
     return false; // Product is not in the cart
