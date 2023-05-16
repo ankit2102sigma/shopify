@@ -225,7 +225,7 @@ function addProductToCart(productKey, quantity) {
       alert('Total Price: ' + totalPrice);
 
       // Check if the total price is greater than or equal to 1000
-      if (totalPrice >= 1000) {
+      if (totalPrice >= 100000) {
         let formData = {
           'items': [{
             'id': productKey,
