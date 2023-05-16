@@ -16,9 +16,10 @@ function handleChange(event) {
   })();
 }
 
-Array.prototype.forEach.call(elements, function (element) {
+Array.prototype.map.call(elements, function (element) {
   element.addEventListener('change', handleChange);
 });
+
 
 
 async function addProductToCart(productKey, quantity) {
