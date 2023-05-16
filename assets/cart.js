@@ -222,8 +222,10 @@ function addProductToCart(productKey, quantity) {
     .then(function(cartData) {
       // Calculate the total price of the cart
       var totalPrice = cartData.total_price;
+      alert('Total Price: ' + totalPrice);
 
-      if (totalPrice >= 100000) {
+      // Check if the total price is greater than or equal to 1000
+      if (totalPrice >= 1000) {
         let formData = {
           'items': [{
             'id': productKey,
@@ -248,33 +250,19 @@ function addProductToCart(productKey, quantity) {
           .then(cartData => {
             console.log('Product added to cart:', cartData);
             alert('Product added to cart!');
-            // Check if the total price is still above 1000 after adding the product
-            fetch('/cart.js')
-              .then(function(response) {
-                return response.json();
-              })
-              .then(function(updatedCartData) {
-                 var totalPrice2 = updatedCartData.total_price;
-                if (totalPrice2 < 100000) {
-                  removeProductFromCart(productKey);
-                }
-              })
-              .catch(function(error) {
-                console.log('Error:', error);
-                console.log('Error retrieving cart data!');
-              });
           })
           .catch(error => {
             console.error('Error:', error);
             alert('Error adding product to cart!');
           });
       } else {
-        console.log('Total price is below 1000. Product not added to cart.');
+        alert('Total price is below 1000. Product not added to cart.');
+        removeProductFromCart(productKey);
       }
     })
     .catch(function(error) {
       console.log('Error:', error);
-      console.log('Error retrieving cart data!');
+      alert('Error retrieving cart data!');
     });
 }
 
@@ -295,12 +283,19 @@ function removeProductFromCart(productKey) {
     .then(cartData => {
       console.log('Product removed from cart:', cartData);
       alert('Product removed from cart!');
+      reloadPage();
     })
     .catch(error => {
       console.error('Error:', error);
       alert('Error removing product from cart!');
     });
 }
+
+function reloadPage() {
+  // Reload the page
+  location.reload();
+}
+
 
 
 
