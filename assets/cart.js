@@ -306,11 +306,6 @@ async function isProductInCart(productKey) {
 (async function () {
   const isInCart = await isProductInCart('45057131315495');
   if (!isInCart) {
-        const response = await fetch('/cart.js');
-          const cartData = await response.json();
-    const totalPrice = cartData.total_price;
-
-
     await addProductToCart('45057131315495', 1);
   }
 })();
