@@ -12,6 +12,11 @@ function handleChange(event) {
     const isInCart = await isProductInCart('45057131315495');
     if (!isInCart) {
       await addProductToCart('45057131315495', 1);
+    } else {
+      const totalPrice = await calculateTotalPrice();
+      if (totalPrice < 100000) {
+        await removeProductFromCart('45057131315495');
+      }
     }
   })();
 }
@@ -21,11 +26,8 @@ Array.from(elements).map(function (element) {
   element.addEventListener('change', handleChange);
 });
 
-
-
 async function addProductToCart(productKey, quantity) {
   try {
-
     const response = await fetch('/cart.js');
     const cartData = await response.json();
     const totalPrice = cartData.total_price;
@@ -51,10 +53,9 @@ async function addProductToCart(productKey, quantity) {
       });
 
       const addedProductData = await addResponse.json();
-      console.log('Product added to cart:');
+      console.log('Product added to cart:', addedProductData);
       // Reload the page
-        location.reload();
-
+      location.reload();
 
       if (addedProductData.items.find(item => item.variant_id === productKey)) {
         await removeProductFromCart(productKey);
@@ -70,7 +71,7 @@ async function addProductToCart(productKey, quantity) {
 
 async function removeProductFromCart(productKey) {
   try {
-    const response = await fetch(`${window.Shopify.routes.root}cart/update.js`, {
+    const response = await fetch(`${window.Shopify.routes.root}cart/change.js`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -102,7 +103,6 @@ async function isProductInCart(productKey) {
 
     for (let i = 0; i < cartData.items.length; i++) {
       if (cartData.items[i].variant_id == productKey) {
-     
         return true; // Product is already in the cart
       }
     }
@@ -110,6 +110,17 @@ async function isProductInCart(productKey) {
   } catch (error) {
     console.log('Error:', error);
     return false; // Error retrieving cart data
+  }
+}
+
+async function calculateTotalPrice() {
+  try {
+    const response = await fetch('/cart.js');
+    const cartData = await response.json();
+    return cartData.total_price;
+  } catch (error) {
+    console.error('Error:', error);
+    return 0; // Return 0 as the default value if an error occurs
   }
 }
 
