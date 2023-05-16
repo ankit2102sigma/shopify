@@ -269,13 +269,12 @@ function addProductToCart(productKey, quantity) {
 
 
 function isProductInCart(productKey) {
-  // Make a request to retrieve the current cart
+
   return fetch('/cart.js')
     .then(function(response) {
       return response.json();
     })
     .then(function(cartData) {
-      // Check if the product with the given key is in the cart
       console.log("data", cartData);
       for (var i = 0; i < cartData.items.length; i++) {
         console.log("variant_id", cartData.items[i].variant_id);
@@ -293,10 +292,10 @@ function isProductInCart(productKey) {
     });
 }
 
-isProductInCart('44976516038951')
+isProductInCart('45057131315495')
   .then(function(isInCart) {
     if (!isInCart) {
-      addProductToCart('44976516038951', 1);
+      addProductToCart('45057131315495', 1);
     }
   });
 
