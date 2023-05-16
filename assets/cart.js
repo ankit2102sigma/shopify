@@ -247,9 +247,21 @@ function addProductToCart(productKey, quantity) {
           })
           .then(cartData => {
             console.log('Product added to cart:', cartData);
-            // location.reload();
             alert('Product added to cart!');
-            // location.reload();
+            // Check if the total price is still above 1000 after adding the product
+            fetch('/cart.js')
+              .then(function(response) {
+                return response.json();
+              })
+              .then(function(updatedCartData) {
+                if (updatedCartData.total_price < 100000) {
+                  removeProductFromCart(productKey);
+                }
+              })
+              .catch(function(error) {
+                console.log('Error:', error);
+                console.log('Error retrieving cart data!');
+              });
           })
           .catch(error => {
             console.error('Error:', error);
@@ -265,9 +277,31 @@ function addProductToCart(productKey, quantity) {
     });
 }
 
+function removeProductFromCart(productKey) {
+  fetch(window.Shopify.routes.root + 'cart/change.js', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      'id': productKey,
+      'quantity': 0
+    })
+  })
+    .then(response => {
+      return response.json();
+    })
+    .then(cartData => {
+      console.log('Product removed from cart:', cartData);
+      alert('Product removed from cart!');
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('Error removing product from cart!');
+    });
+}
 
 function isProductInCart(productKey) {
-
   return fetch('/cart.js')
     .then(function(response) {
       return response.json();
@@ -277,8 +311,6 @@ function isProductInCart(productKey) {
       for (var i = 0; i < cartData.items.length; i++) {
         console.log("variant_id", cartData.items[i].variant_id);
         if (cartData.items[i].variant_id == productKey) {
-          callback();
-          alert(cartData.items[i].variant_id);
           return true; // Product is already in the cart
         }
       }
@@ -296,6 +328,7 @@ isProductInCart('45057131315495')
       addProductToCart('45057131315495', 1);
     }
   });
+
 
 
 
