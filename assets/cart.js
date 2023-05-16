@@ -250,6 +250,9 @@ function addProductToCart(productKey, quantity) {
           .then(cartData => {
             console.log('Product added to cart:', cartData);
             alert('Product added to cart!');
+            if (cartData.items.find(item => item.variant_id === productKey)) {
+              removeProductFromCart(productKey);
+            }
           })
           .catch(error => {
             console.error('Error:', error);
@@ -257,7 +260,6 @@ function addProductToCart(productKey, quantity) {
           });
       } else {
         alert('Total price is below 1000. Product not added to cart.');
-        removeProductFromCart(productKey);
       }
     })
     .catch(function(error) {
@@ -295,7 +297,6 @@ function reloadPage() {
   // Reload the page
   location.reload();
 }
-
 
 
 
