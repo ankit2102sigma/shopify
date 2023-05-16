@@ -222,7 +222,7 @@ function addProductToCart(productKey, quantity) {
     .then(function(cartData) {
       // Calculate the total price of the cart
       var totalPrice = cartData.total_price;
-      alert('Total Price: ' + totalPrice);
+      // alert('Total Price: ' + totalPrice);
 
       // Check if the total price is greater than or equal to 1000
       if (totalPrice >= 100000) {
