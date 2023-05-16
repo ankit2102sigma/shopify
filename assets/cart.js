@@ -308,19 +308,6 @@ async function isProductInCart(productKey) {
 })();
 
 
-const observer = new MutationObserver(function () {
-  observer.disconnect(); // Disconnect the observer
-  location.reload();
-});
-
-const observerConfig = {
-  childList: true,
-  subtree: true,
-};
-
-observer.observe(document.body, observerConfig);
-
-
 
 
 
