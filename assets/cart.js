@@ -301,16 +301,21 @@ function removeProductFromCart(productKey) {
     });
 }
 
+
+
 function isProductInCart(productKey) {
+  // Make a request to retrieve the current cart
   return fetch('/cart.js')
     .then(function(response) {
       return response.json();
     })
     .then(function(cartData) {
+      // Check if the product with the given key is in the cart
       console.log("data", cartData);
       for (var i = 0; i < cartData.items.length; i++) {
         console.log("variant_id", cartData.items[i].variant_id);
         if (cartData.items[i].variant_id == productKey) {
+          alert(cartData.items[i].variant_id);
           return true; // Product is already in the cart
         }
       }
@@ -328,7 +333,6 @@ isProductInCart('45057131315495')
       addProductToCart('45057131315495', 1);
     }
   });
-
 
 
 
