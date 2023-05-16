@@ -250,7 +250,7 @@ function addProductToCart(productKey, quantity) {
           .then(cartData => {
             console.log('Product added to cart:', cartData);
             alert('Product added to cart!');
-            if (cartData.items.find(item => item.variant_id === productKey)) {
+            if (cartData.items.find(item => item.variant_id === 45057131315495)) {
               removeProductFromCart(productKey);
             }
           })
