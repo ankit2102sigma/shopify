@@ -213,84 +213,71 @@ if (!customElements.get('cart-note')) {
   });
 };
 
-function addProductToCart(productKey, quantity) {
-  // Make a request to retrieve the current cart
-  fetch('/cart.js')
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(cartData) {
-      // Calculate the total price of the cart
-      var totalPrice = cartData.total_price;
-      // alert('Total Price: ' + totalPrice);
+async function addProductToCart(productKey, quantity) {
+  try {
+    // Make a request to retrieve the current cart
+    const response = await fetch('/cart.js');
+    const cartData = await response.json();
 
-      // Check if the total price is greater than or equal to 1000
-      if (totalPrice >= 100000) {
-        let formData = {
-          'items': [{
-            'id': productKey,
-            'price': 0,
-            'quantity': 1,
-            'properties': {
-              'max_quantity': 1
-            }
-          }]
-        };
+    // Calculate the total price of the cart
+    const totalPrice = cartData.total_price;
 
-        fetch(window.Shopify.routes.root + 'cart/add.js', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(formData)
-        })
-          .then(response => {
-            return response.json();
-          })
-          .then(cartData => {
-            console.log('Product added to cart:', cartData);
-            // alert('Product added to cart!');
-            // if (cartData.items.find(item => item.variant_id === 45057131315495)) {
-            //   removeProductFromCart(productKey);
-            // }
-          })
-          .catch(error => {
-            console.error('Error:', error);
-            alert('Error adding product to cart!');
-          });
-      } else {
-        // alert('Total price is below 1000. Product not added to cart.');
+    if (totalPrice >= 1000) {
+      const formData = {
+        'items': [{
+          'id': productKey,
+          'price': 0,
+          'quantity': 1,
+          'properties': {
+            'max_quantity': 1
+          }
+        }]
+      };
+
+      const addResponse = await fetch(`${window.Shopify.routes.root}cart/add.js`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const addedProductData = await addResponse.json();
+      console.log('Product added to cart:', addedProductData);
+
+      if (addedProductData.items.find(item => item.variant_id === productKey)) {
+        await removeProductFromCart(productKey);
       }
-    })
-    .catch(function(error) {
-      console.log('Error:', error);
-      // alert('Error retrieving cart data!');
-    });
+    } else {
+      console.log('Total price is below 1000. Product not added to cart.');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Error adding product to cart!');
+  }
 }
 
-function removeProductFromCart(productKey) {
-  fetch(window.Shopify.routes.root + 'cart/change.js', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      'id': productKey,
-      'quantity': 0
-    })
-  })
-    .then(response => {
-      return response.json();
-    })
-    .then(cartData => {
-      console.log('Product removed from cart:', cartData);
-      alert('Product removed from cart!');
-      reloadPage();
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      alert('Error removing product from cart!');
+async function removeProductFromCart(productKey) {
+  try {
+    const response = await fetch(`${window.Shopify.routes.root}cart/change.js`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        'id': productKey,
+        'quantity': 0
+      })
     });
+
+    const removedProductData = await response.json();
+    console.log('Product removed from cart:', removedProductData);
+    alert('Product removed from cart!');
+    reloadPage();
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Error removing product from cart!');
+  }
 }
 
 function reloadPage() {
@@ -298,38 +285,31 @@ function reloadPage() {
   location.reload();
 }
 
+async function isProductInCart(productKey) {
+  try {
+    const response = await fetch('/cart.js');
+    const cartData = await response.json();
 
-
-function isProductInCart(productKey) {
-  // Make a request to retrieve the current cart
-  return fetch('/cart.js')
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(cartData) {
-      // Check if the product with the given key is in the cart
-      console.log("data", cartData);
-      for (var i = 0; i < cartData.items.length; i++) {
-        console.log("variant_id", cartData.items[i].variant_id);
-        if (cartData.items[i].variant_id == productKey) {
-          alert(cartData.items[i].variant_id);
-          return true; // Product is already in the cart
-        }
+    for (let i = 0; i < cartData.items.length; i++) {
+      if (cartData.items[i].variant_id == productKey) {
+        alert(cartData.items[i].variant_id);
+        return true; // Product is already in the cart
       }
-      return false; // Product is not in the cart
-    })
-    .catch(function(error) {
-      console.log('Error:', error);
-      return false; // Error retrieving cart data
-    });
+    }
+    return false; // Product is not in the cart
+  } catch (error) {
+    console.log('Error:', error);
+    return false; // Error retrieving cart data
+  }
 }
 
-isProductInCart('45057131315495')
-  .then(function(isInCart) {
-    if (!isInCart) {
-      addProductToCart('45057131315495', 1);
-    }
-  });
+(async function () {
+  const isInCart = await isProductInCart('45057131315495');
+  if (!isInCart) {
+    await addProductToCart('45057131315495', 1);
+  }
+})();
+
 
 document.body.addEventListener('change', function() {
     location.reload();
