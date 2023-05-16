@@ -1,0 +1,96 @@
+async function addProductToCart(productKey, quantity) {
+  try {
+
+    const response = await fetch('/cart.js');
+    const cartData = await response.json();
+    const totalPrice = cartData.total_price;
+
+    if (totalPrice >= 1000000) {
+      const formData = {
+        'items': [{
+          'id': productKey,
+          'price': 0,
+          'quantity': 1,
+          'properties': {
+            'max_quantity': 1
+          }
+        }]
+      };
+
+      const addResponse = await fetch(`${window.Shopify.routes.root}cart/add.js`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const addedProductData = await addResponse.json();
+      console.log('Product added to cart:');
+      // Reload the page
+        location.reload();
+
+
+      if (addedProductData.items.find(item => item.variant_id === productKey)) {
+        await removeProductFromCart(productKey);
+      }
+    } else {
+      console.log('Total price is below 1000. Product not added to cart.');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Error adding product to cart!');
+  }
+}
+
+async function removeProductFromCart(productKey) {
+  try {
+    const response = await fetch(`${window.Shopify.routes.root}cart/update.js`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        'id': productKey,
+        'quantity': 0
+      })
+    });
+
+    const removedProductData = await response.json();
+    console.log('Product removed from cart:', removedProductData);
+    alert('Product removed from cart!');
+    reloadPage();
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Error removing product from cart!');
+  }
+}
+
+function reloadPage() {
+  location.reload();
+}
+
+async function isProductInCart(productKey) {
+  try {
+    const response = await fetch('/cart.js');
+    const cartData = await response.json();
+
+    for (let i = 0; i < cartData.items.length; i++) {
+      if (cartData.items[i].variant_id == productKey) {
+     
+        return true; // Product is already in the cart
+      }
+    }
+    return false; // Product is not in the cart
+  } catch (error) {
+    console.log('Error:', error);
+    return false; // Error retrieving cart data
+  }
+}
+
+(async function () {
+  const isInCart = await isProductInCart('45057131315495');
+  if (!isInCart) {
+    await addProductToCart('45057131315495', 1);
+  }
+})();
