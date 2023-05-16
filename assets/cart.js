@@ -308,9 +308,7 @@ async function isProductInCart(productKey) {
 })();
 
 
-document.body.addEventListener('change', function() {
-    location.reload();
-});
+
 
 
 
