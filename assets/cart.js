@@ -309,8 +309,17 @@ async function isProductInCart(productKey) {
   const isInCart = await isProductInCart('45057131315495');
   if (!isInCart) {
     await addProductToCart('45057131315495', 1);
+  } else {
+    const response = await fetch('/cart.js');
+    const cartData = await response.json();
+    const totalPrice = cartData.total_price;
+
+    if (totalPrice < 100000) {
+      await removeProductFromCart('45057131315495');
+    }
   }
 })();
+
 
 
 
