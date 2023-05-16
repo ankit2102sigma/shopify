@@ -310,10 +310,7 @@ async function isProductInCart(productKey) {
           const cartData = await response.json();
     const totalPrice = cartData.total_price;
 
-    if (totalPrice < 1000000) {
-      await removeProductFromCart(45057131315495)
-    }
-    else{
+
     await addProductToCart('45057131315495', 1);
   }
 })();
