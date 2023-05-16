@@ -294,7 +294,9 @@ async function isProductInCart(productKey) {
             if(totalPrice<100000){
               removeProductFromCart(productKey)
                 }
+        else{
         return true; 
+        }
     }
     return false; 
   } catch (error) {
