@@ -19,7 +19,7 @@ function handleChange(event) {
 }
 
 Array.prototype.forEach.call(elements, function (element) {
-  window.location.reload();
+
   element.addEventListener('change', handleChange);
 });
 
