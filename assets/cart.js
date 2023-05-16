@@ -286,19 +286,14 @@ async function isProductInCart(productKey) {
   try {
     const response = await fetch('/cart.js');
     const cartData = await response.json();
-    const totalPrice = cartData.total_price;
 
     for (let i = 0; i < cartData.items.length; i++) {
       if (cartData.items[i].variant_id == productKey) {
         alert(cartData.items[i].variant_id);
-            if(totalPrice<100000){
-              removeProductFromCart(productKey)
-                }
-        else{
-        return true; 
-        }
+        return true; // Product is already in the cart
+      }
     }
-    return false; 
+    return false; // Product is not in the cart
   } catch (error) {
     console.log('Error:', error);
     return false; // Error retrieving cart data
