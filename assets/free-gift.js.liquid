@@ -30,7 +30,7 @@ async function addProductToCart(productKey, quantity) {
   try {
     const response = await fetch('/cart.js');
     const cartData = await response.json();
-    const totalPrice = cartData.total_price;
+    const totalPrice = cartData.items_subtotal_price;
 
     if (totalPrice >= 1000000) {
       const formData = {
@@ -117,7 +117,7 @@ async function calculateTotalPrice() {
   try {
     const response = await fetch('/cart.js');
     const cartData = await response.json();
-    return cartData.total_price;
+    return cartData.items_subtotal_price;
   } catch (error) {
     console.error('Error:', error);
     return 0; // Return 0 as the default value if an error occurs
