@@ -14,16 +14,17 @@
 const elements = document.getElementsByClassName('quantity__input');
 
 
-
 function handleChange(event) {
-  reloadPage();
+
+
   console.log('Input value changed:', event.target.value);
   
   (async function () {
-    console.log("aaa", {{ dynamicPrice }});
+      console.log("aaa", {{ dynamicPrice }})
     const isInCart = await isProductInCart('45057131315495');
     if (!isInCart) {
       await addProductToCart('45057131315495', 1);
+    
     } else {
       const totalPrice = await calculateTotalPrice();
       if (totalPrice < 100000) {
@@ -31,6 +32,8 @@ function handleChange(event) {
       }
     }
   })();
+ 
+  // window.location.reload(); // Reload the page
 }
 
 Array.prototype.forEach.call(elements, function (element) {
@@ -39,10 +42,7 @@ Array.prototype.forEach.call(elements, function (element) {
   element.addEventListener('change', handleChange);
 });
 
-
-
-
-async function addProductToCart(productKey, quantity) {
+async function addProductToCart(productKey, quantity, callback) {
   try {
     const response = await fetch('/cart.js');
     const cartData = await response.json();
@@ -71,11 +71,13 @@ async function addProductToCart(productKey, quantity) {
 
       const addedProductData = await addResponse.json();
       console.log('Product added to cart:', addedProductData);
-      // Reload the page
-      location.reload();
 
       if (addedProductData.items.find(item => item.variant_id === productKey)) {
         await removeProductFromCart(productKey);
+      }
+
+      if (typeof callback === 'function') {
+        callback(); // Invoke the callback function
       }
     } else {
       console.log('Total price is below 1000. Product not added to cart.');
@@ -85,6 +87,7 @@ async function addProductToCart(productKey, quantity) {
     alert('Error adding product to cart!');
   }
 }
+
 
 async function removeProductFromCart(productKey) {
   try {
