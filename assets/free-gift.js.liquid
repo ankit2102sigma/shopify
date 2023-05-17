@@ -36,9 +36,9 @@ function handleChange(event) {
 }
 
 Array.prototype.forEach.call(elements, function (element) {
-  
+
+    location.reload();
   element.addEventListener('change', handleChange);
-  location.reload();
 });
 
 
