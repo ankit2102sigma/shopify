@@ -12,8 +12,10 @@
   })(); {% endcomment %}
   
 const elements = document.getElementsByClassName('quantity__input');
+reloadPage()
 
 function handleChange(event) {
+  reloadPage()
 
   console.log('Input value changed:', event.target.value);
   
@@ -134,6 +136,7 @@ async function calculateTotalPrice() {
     const response = await fetch('/cart.js');
     const cartData = await response.json();
     return cartData.items_subtotal_price;
+    reloadPage()
   } catch (error) {
     console.error('Error:', error);
     return 0; // Return 0 as the default value if an error occurs
