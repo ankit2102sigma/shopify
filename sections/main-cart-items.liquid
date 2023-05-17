@@ -28,7 +28,6 @@
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     var freeProductId = "{{ freeProductId }}";
-  alert("fid" + freeProductId)
 
     // Make an AJAX request to fetch the cart data
     fetch('/cart.js')
@@ -41,13 +40,13 @@
 
         cartItems.forEach(function(item) {
           var variantId = item.variant_id;
-          console.log(variantId)
+          console.log(variantId);
 
-         if (parseInt(variantId) === parseInt(freeProductId)) {
-          console.log("match");
-            var quantityInput = document.querySelector('.cart-item[data-variant-id="' + variantId + '"] .gift');
+          if (parseInt(variantId) === parseInt(freeProductId)) {
+            console.log("match");
+            var quantityInput = document.querySelector('.cart-item[data-variant-id="' + variantId + '"] .quantity');
             if (quantityInput) {
-              quantityInput.classList.add("hidden");
+              quantityInput.style.display = "none";
             }
           }
         });
@@ -57,6 +56,7 @@
       });
   });
 </script>
+
 
 
 
