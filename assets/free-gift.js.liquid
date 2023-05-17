@@ -38,7 +38,7 @@ async function addProductToCart(productKey, quantity) {
     const totalPrice = cartData.items_subtotal_price;
     const dynamicPrice = window.dynamicPrice;
 
-    if (totalPrice >= dynamicPrice) {
+    if (totalPrice >= 100000) {
       const formData = {
         'items': [{
           'id': productKey,
