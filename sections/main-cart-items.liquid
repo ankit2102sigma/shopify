@@ -36,9 +36,11 @@
       })
       .then(function(data) {
         var cartItems = data.items;
+        console.log(cartItems);
 
         cartItems.forEach(function(item) {
           var variantId = item.variant_id;
+          console.log(variantId)
 
           if (variantId === freeProductId) {
           alert("match");
