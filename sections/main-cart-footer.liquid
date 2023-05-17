@@ -94,11 +94,20 @@
     </div>
   </div>
 </div>
-{% assign dynamicPrice = blocks.settings.price_input %}
-<script>
-  var dynamicPrice = {{ dynamicPrice | json }};
+{% assign dynamicPrice = "" %}
+{% for block in section.blocks %}
+  {% if block.type == "input" %}
+    {% for setting in block.settings %}
+      {% if setting.id == "price_input" %}
+        {% assign dynamicPrice = setting.default %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+
+{{ dynamicPrice }}
   alert(dynamicPrice);
-</script>
+
 
 
 <script>
@@ -122,18 +131,7 @@
   });
 
 
-{% assign dynamicPrice = "" %}
-{% for block in section.blocks %}
-  {% if block.type == "input" %}
-    {% for setting in block.settings %}
-      {% if setting.id == "price_input" %}
-        {% assign dynamicPrice = setting.default %}
-      {% endif %}
-    {% endfor %}
-  {% endif %}
-{% endfor %}
 
-{{ dynamicPrice }}
 
 
 
