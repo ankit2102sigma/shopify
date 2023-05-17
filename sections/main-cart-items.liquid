@@ -23,6 +23,7 @@
 </script>
 
 {% assign freeProductId = section.settings.free_product_id %}
+{% assign freeProductIdInt = freeProductId | to_integer %}
 
 
 <script>
@@ -284,7 +285,7 @@
                         {{ 'products.product.quantity.label' | t }}
                       </label>
                      <quantity-input class="quantity cart-quantity">
-   {% unless item.variant.id == freeProductId  %}
+   {% unless item.variant.id == freeProductIdInt %}
     <button class="quantity__button no-js-hidden" name="minus" type="button">
       <span class="visually-hidden">
         {{- 'products.product.quantity.decrease' | t: product: item.product.title | escape -}}
