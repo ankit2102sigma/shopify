@@ -94,6 +94,12 @@
     </div>
   </div>
 </div>
+{% assign dynamicPrice = price_input | default: 0 %}
+<script>
+  var dynamicPrice = {{ dynamicPrice | json }};
+  alert(dynamicPrice)
+</script>
+
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
