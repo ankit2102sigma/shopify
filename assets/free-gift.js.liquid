@@ -52,12 +52,13 @@ async function addProductToCart(productKey, quantity) {
 
       const addedProductData = await addResponse.json();
       console.log('Product added to cart:', addedProductData);
-
+      reloadPage()
 
       if (addedProductData.items.find(item => item.variant_id === productKey)) {
         await removeProductFromCart(productKey);
       }
     } else {
+      reloadPage()
       console.log('Total price is below 1000. Product not added to cart.');
     }
   } catch (error) {
