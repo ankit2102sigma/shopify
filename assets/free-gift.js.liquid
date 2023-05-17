@@ -1,9 +1,9 @@
-window.onload = function(event) {
-  alert("reload")
+window.onload = async function(event) {
+  alert("reload");
   const productKey = '45057131315495'; // Replace with the actual product key
   const quantity = 1;
 
-  const isInCart =  isProductInCart(productKey);
+  const isInCart =  await isProductInCart(productKey);
   if (!isInCart) {
     await addProductToCart(productKey, quantity, reloadPage);
   } else {
