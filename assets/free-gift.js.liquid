@@ -1,6 +1,7 @@
 const elements = document.getElementsByClassName('quantity__input');
 
 function handleChange(event) {
+  console.log("aaa", {{ dynamicPrice }})
   console.log('Input value changed:', event.target.value);
   
   (async function () {
