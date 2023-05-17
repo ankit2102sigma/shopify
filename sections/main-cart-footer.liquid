@@ -95,20 +95,7 @@
   </div>
 </div>
 <script src="{{ 'free-gift.js.liquid' | asset_url }}" defer="defer"></script>
-<script>
-  {% assign dynamicPrice = "" %}
-  {% for block in section.blocks %}
-    {% if block.type == "input" %}
-      {% for setting in block.settings %}
- 
-          {% assign dynamicPrice = block.settings.price_input %}
-
-      {% endfor %}
-    {% endif %}
-  {% endfor %}
-
-  console.log("Dynamic Price: " + "{{ dynamicPrice }}");
-</script>
+<!--  -->
 
 
 
