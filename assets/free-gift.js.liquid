@@ -38,6 +38,7 @@ function handleChange(event) {
 Array.prototype.forEach.call(elements, function (element) {
   
   element.addEventListener('change', handleChange);
+  location.reload();
 });
 
 
