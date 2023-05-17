@@ -126,6 +126,7 @@ async function isProductInCart(productKey) {
         return true; // Product is already in the cart
       }
     }
+    reloadPage()
     return false; // Product is not in the cart
   } catch (error) {
     console.log('Error:', error);
