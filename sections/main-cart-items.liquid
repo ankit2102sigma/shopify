@@ -24,9 +24,11 @@
 
 {% assign freeProductId = section.settings.free_product_id %}
 
+
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     var freeProductId = "{{ freeProductId }}";
+    alert(freeProductId);
 
     var cartItems = document.querySelectorAll(".cart-item");
 
