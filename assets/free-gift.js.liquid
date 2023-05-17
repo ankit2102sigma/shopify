@@ -7,9 +7,9 @@ function handleChange(event) {
 
   console.log('Input value changed:', event.target.value);
   
-  
+  (async function () {
       console.log("aaa", {{ dynamicPrice }})
-    const isInCart = isProductInCart('45057131315495');
+    const isInCart = await isProductInCart('45057131315495');
     if (!isInCart) {
       await addProductToCart('45057131315495', 1);
     } else {
@@ -18,7 +18,7 @@ function handleChange(event) {
         await removeProductFromCart('45057131315495');
       }
     }
-
+  })();
 
   // window.location.reload(); // Reload the page
 }
