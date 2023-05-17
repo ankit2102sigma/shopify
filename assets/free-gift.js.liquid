@@ -1,22 +1,4 @@
 
-document.addEventListener('DOMContentLoaded', function() {
-  // Your function code goes here
-  console.log('Page loaded');
-
- const productKey = '45057131315495'; // Replace with the actual product key
-  const quantity = 1;
-
-  const isInCart = await isProductInCart(productKey);
-  if (!isInCart) {
-    await addProductToCart(productKey, quantity, reloadPage);
-  } else {
-    const totalPrice = await calculateTotalPrice();
-    if (totalPrice <= 100000) {
-      await removeProductFromCart(productKey, reloadPage);
-    }
-  }
-}
-});
 
 const elements = document.getElementsByClassName('quantity__input');
 
