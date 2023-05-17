@@ -287,7 +287,11 @@
                         {{ 'products.product.quantity.label' | t }}
                       </label>
                       <quantity-input class="quantity cart-quantity">
-<button class="quantity__button no-js-hidden {% if "{{item.variant.id}}" == "{{freeProductIdInt}}" %}gift{% endif %}" name="minus" type="button" {% if item.variant.id == freeProductIdInt %}disabled{% endif %}>
+{% if item.variant.id == freeProductIdInt %}
+  <button class="quantity__button no-js-hidden" name="minus" type="button" disabled>
+{% else %}
+  <button class="quantity__button no-js-hidden" name="minus" type="button">
+{% endif %}
   <span class="visually-hidden">
     {{- 'products.product.quantity.decrease' | t: product: item.product.title | escape -}}
   </span>
