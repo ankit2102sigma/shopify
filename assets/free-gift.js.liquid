@@ -17,7 +17,7 @@ async function handleChange(event) {
     await addProductToCart(productKey, quantity, reloadPage);
   } else {
     const totalPrice = await calculateTotalPrice();
-    if (totalPrice < 100000) {
+    if (totalPrice <= 100000) {
       await removeProductFromCart(productKey, reloadPage);
     }
   }
