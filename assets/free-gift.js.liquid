@@ -124,12 +124,13 @@ async function calculateTotalPrice() {
     return 0; // Return 0 as the default value if an error occurs
   }
 }
-const removeButton = document.querySelector('cart-remove-button');
+const removeButtons = document.getElementsByTagName('cart-remove-button');
 
-removeButton.addEventListener('click', handleClick);
+for (let i = 0; i < removeButtons.length; i++) {
+  removeButtons[i].addEventListener('click', handleClick);
+}
 
 async function handleClick(event) {
-  console.log("remove");
   event.preventDefault(); // Prevent the default click behavior of the button
 
   const productKey = '45057131315495'; // Replace with the actual product key
