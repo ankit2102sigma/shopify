@@ -98,21 +98,16 @@
 <script>
   {% assign dynamicPrice = "" %}
   {% for block in section.blocks %}
-    console.log("1");
-  {% if block.type == "input" %}
-    console.log("2");
+    {% if block.type == "input" %}
       {% for setting in block.settings %}
-        console.log("3");
-      
-          console.log("4")
-          {% assign dynamicPrice = blocks.setting.price_input %}
-          console.log("dy:" ,dynamicPrice )
-
+        {% if setting.id == "price_input" %}
+          {% assign dynamicPrice = setting.default %}
+        {% endif %}
       {% endfor %}
     {% endif %}
   {% endfor %}
 
-  alert("Dynamic Price: " + {{ dynamicPrice | json }});
+  alert("Dynamic Price: " + "{{ dynamicPrice }}");
 </script>
 
 
