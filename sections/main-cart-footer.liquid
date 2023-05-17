@@ -94,7 +94,7 @@
     </div>
   </div>
 </div>
-{% assign dynamicPrice = section.settings.price_input %}
+{% assign dynamicPrice = blocks.settings.price_input %}
 <script>
   var dynamicPrice = {{ dynamicPrice | json }};
   alert(dynamicPrice);
