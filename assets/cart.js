@@ -54,7 +54,6 @@ class CartItems extends HTMLElement {
       .then((responseText) => {
         const html = new DOMParser().parseFromString(responseText, 'text/html');
         const sourceQty = html.querySelector('cart-items');
-        location.reload()
         this.innerHTML = sourceQty.innerHTML;
         location.reload();
       })
