@@ -1,6 +1,6 @@
 window.onload = function(event) {
   console.log("reload")
-  handleChange(event)
+  const isInCart = await isProductInCart(45057131315495);
 }
 
 const elements = document.getElementsByClassName('quantity__input');
