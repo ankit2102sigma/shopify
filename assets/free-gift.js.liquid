@@ -1,35 +1,28 @@
 
-  
 const elements = document.getElementsByClassName('quantity__input');
 
-
-function handleChange(event) {
-
-
-  console.log('Input value changed:', event.target.value);
-  
-  (async function () {
-      console.log("aaa", {{ dynamicPrice }})
-    const isInCart = await isProductInCart('45057131315495');
-    if (!isInCart) {
-      await addProductToCart('45057131315495', 1);
-    
-    } else {
-      const totalPrice = await calculateTotalPrice();
-      if (totalPrice < 100000) {
-        await removeProductFromCart('45057131315495');
-      }
-    }
-  })();
- 
-  // window.location.reload(); // Reload the page
+// Loop through each element and attach the event listener
+for (let i = 0; i < elements.length; i++) {
+  const element = elements[i];
+  element.addEventListener('change', handleChange);
 }
 
-Array.prototype.forEach.call(elements, function (element) {
+async function handleChange(event) {
+  console.log('Input value changed:', event.target.value);
 
-  
-  element.addEventListener('change', handleChange);
-});
+  const productKey = '45057131315495'; // Replace with the actual product key
+  const quantity = 1;
+
+  const isInCart = await isProductInCart(productKey);
+  if (!isInCart) {
+    await addProductToCart(productKey, quantity, reloadPage);
+  } else {
+    const totalPrice = await calculateTotalPrice();
+    if (totalPrice < 100000) {
+      await removeProductFromCart(productKey, reloadPage);
+    }
+  }
+}
 
 async function addProductToCart(productKey, quantity, callback) {
   try {
