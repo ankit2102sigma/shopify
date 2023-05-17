@@ -15,6 +15,33 @@ window.onload = async function(event) {
 }
 
 
+class CustomEventClass extends QuantityInput {
+  constructor(){
+    super()
+  }
+    connectedCallback(event) {
+      
+console.log('test1');
+
+}
+
+
+
+let onButtonClick = QuantityInput.prototype.onButtonClick
+CustomEventClass.prototype.onButtonClick = (event) => {
+     console.log('Test');
+    const previousValue = this.input.value;
+    event.target.name === 'plus' ? this.input.stepUp() : this.input.stepDown();
+    if (previousValue !== this.input.value) this.input.dispatchEvent(this.changeEvent);
+
+
+    }
+    
+}
+
+customElements.define('custom-quantity-input', CustomEventClass);
+
+
 
 
 const elements = document.getElementsByClassName('quantity__input');
