@@ -14,17 +14,16 @@
 const elements = document.getElementsByClassName('quantity__input');
 
 
-function handleChange(event) {
-  reloadPage()
 
+function handleChange(event) {
+  reloadPage();
   console.log('Input value changed:', event.target.value);
   
   (async function () {
-      console.log("aaa", {{ dynamicPrice }})
+    console.log("aaa", {{ dynamicPrice }});
     const isInCart = await isProductInCart('45057131315495');
     if (!isInCart) {
       await addProductToCart('45057131315495', 1);
-    
     } else {
       const totalPrice = await calculateTotalPrice();
       if (totalPrice < 100000) {
@@ -32,8 +31,6 @@ function handleChange(event) {
       }
     }
   })();
- 
-  // window.location.reload(); // Reload the page
 }
 
 Array.prototype.forEach.call(elements, function (element) {
