@@ -94,7 +94,7 @@
     </div>
   </div>
 </div>
-{% assign dynamicPrice = price_input | default: 0 %}
+{% assign dynamicPrice = price_input | default: 1000 %}
 <script>
   var dynamicPrice = {{ dynamicPrice | json }};
   alert(dynamicPrice);
