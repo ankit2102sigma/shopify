@@ -147,4 +147,23 @@ async function calculateTotalPrice() {
     return 0; // Return 0 as the default value if an error occurs
   }
 }
+const removeButton = document.getElementById('cart-remove-button');
+
+removeButton.addEventListener('click', handleClick);
+
+async function handleClick() {
+  const productKey = '45057131315495'; // Replace with the actual product key
+  const quantity = 1;
+
+  const isInCart = await isProductInCart(productKey);
+  if (!isInCart) {
+    await addProductToCart(productKey, quantity, reloadPage);
+  } else {
+    const totalPrice = await calculateTotalPrice();
+    if (totalPrice < 100000) {
+      await removeProductFromCart(productKey, reloadPage);
+    }
+  }
+}
+
 
