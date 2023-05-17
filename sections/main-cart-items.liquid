@@ -287,11 +287,7 @@
                         {{ 'products.product.quantity.label' | t }}
                       </label>
                       <quantity-input class="quantity cart-quantity">
-{% if 45057131315495 == 45057131315495 %}
-  <button class="quantity__button no-js-hidden" name="minus" type="button" disabled>
-{% else %}
-  <button class="quantity__button no-js-hidden" name="minus" type="button">
-{% endif %}
+<button class="quantity__button no-js-hidden {% if 45057131315495 == 45057131315495 %}gift{% endif %}" name="minus" type="button" {% if item.variant.id == freeProductIdInt %}disabled{% endif %}>
   <span class="visually-hidden">
     {{- 'products.product.quantity.decrease' | t: product: item.product.title | escape -}}
   </span>
