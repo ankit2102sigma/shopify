@@ -4,7 +4,8 @@
       "type": "main-cart-items",
       "settings": {
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 36,
+        "free_product_id": "45057131315495"
       }
     },
     "cart-footer": {
