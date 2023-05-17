@@ -101,7 +101,7 @@
     {% if block.type == "input" %}
       {% for setting in block.settings %}
         {% if setting.id == "price_input" %}
-          {% assign dynamicPrice = setting.default %}
+          {% assign dynamicPrice = setting.price_input %}
         {% endif %}
       {% endfor %}
     {% endif %}
