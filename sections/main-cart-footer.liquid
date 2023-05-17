@@ -103,11 +103,11 @@
     console.log("2");
       {% for setting in block.settings %}
         console.log("3");
-        {% if setting.id == "price_input" %}
+      
           console.log("4")
           {% assign dynamicPrice = blocks.setting.price_input %}
           console.log("dy:" ,dynamicPrice )
-        {% endif %}
+
       {% endfor %}
     {% endif %}
   {% endfor %}
