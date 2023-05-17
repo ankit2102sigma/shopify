@@ -19,6 +19,7 @@
   {% endfor %}
 
   console.log("Dynamic Price: " + "{{ dynamicPrice }}");
+  window.dynamicPrice = {{ dynamicPrice | json }};
 </script>
 
 
