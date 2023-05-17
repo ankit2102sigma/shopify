@@ -1,6 +1,4 @@
-if (window.location.href === 'https://laptopifyy.myshopify.com/cart') {
-  alert("calling");
-async function () {
+{% comment %} (async function () {
       console.log("aaa", {{ dynamicPrice }})
     const isInCart = await isProductInCart('45057131315495');
     if (!isInCart) {
@@ -11,8 +9,7 @@ async function () {
         await removeProductFromCart('45057131315495');
       }
     }
-  })(); 
-}
+  })(); {% endcomment %}
   
 const elements = document.getElementsByClassName('quantity__input');
 
