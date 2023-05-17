@@ -1,12 +1,3 @@
-// Select the body element
-var body = document.querySelector('body');
-
-// Add an event listener for the 'change' event
-// body.addEventListener('change', function() {
-//   // Perform actions or reload the page as needed
-//   location.reload();
-// });
-
 
 function getFocusableElements(container) {
   return Array.from(
