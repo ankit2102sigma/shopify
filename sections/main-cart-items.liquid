@@ -26,7 +26,7 @@
 
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
+{% comment %}   document.addEventListener("DOMContentLoaded", function() {
     var freeProductId = "{{ freeProductId }}";
   alert("fid" + freeProductId)
 
@@ -41,7 +41,7 @@
 
         cartItems.forEach(function(item) {
           var variantId = item.variant_id;
-          console.log(variantId)
+          console.log(variantId) {% endcomment %}
 
          document.addEventListener("DOMContentLoaded", function() {
   var freeProductId = "{{ freeProductId }}"; // Replace with the appropriate value or liquid variable
@@ -61,10 +61,7 @@
   });
 });
 
-      .catch(function(error) {
-        console.log('Error fetching cart data:', error);
-      });
-  });
+      
 </script>
 
 
