@@ -28,20 +28,32 @@
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     var freeProductId = "{{ freeProductId }}";
-    alert(freeProductId);
 
-    var cartItems = document.querySelectorAll(".cart-item");
+    // Make an AJAX request to fetch the cart data
+    fetch('/cart.js')
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        var cartItems = data.items;
 
-    cartItems.forEach(function(item) {
-      var variantId = item.getAttribute("data-variant-id");
+        cartItems.forEach(function(item) {
+          var variantId = item.variant_id;
 
-      if (variantId === freeProductId) {
-        var quantityInput = item.querySelector(".quantity-input");
-        quantityInput.classList.add("hidden");
-      }
-    });
+          if (variantId === freeProductId) {
+            var quantityInput = document.querySelector('.cart-item[data-variant-id="' + variantId + '"] .quantity-input');
+            if (quantityInput) {
+              quantityInput.classList.add("hidden");
+            }
+          }
+        });
+      })
+      .catch(function(error) {
+        console.log('Error fetching cart data:', error);
+      });
   });
 </script>
+
 
 
 
