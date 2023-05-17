@@ -52,8 +52,7 @@ async function addProductToCart(productKey, quantity) {
 
       const addedProductData = await addResponse.json();
       console.log('Product added to cart:', addedProductData);
-      // Reload the page
-      location.reload();
+
 
       if (addedProductData.items.find(item => item.variant_id === productKey)) {
         await removeProductFromCart(productKey);
@@ -106,7 +105,6 @@ async function isProductInCart(productKey) {
         return true; // Product is already in the cart
       }
     }
-    reloadPage()
     return false; // Product is not in the cart
   } catch (error) {
     console.log('Error:', error);
