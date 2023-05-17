@@ -145,6 +145,8 @@ async function handleClick(event) {
     if (totalPrice < 100000) {
       await removeProductFromCart(productKey);
     }
+    else{
+reloadPage();}
   }
 }
 
