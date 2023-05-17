@@ -22,6 +22,26 @@
   window.dynamicPrice = {{ dynamicPrice | json }};
 </script>
 
+{% assign freeProductId = section.settings.free_product_id %}
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var freeProductId = "{{ freeProductId }}";
+
+    var cartItems = document.querySelectorAll(".cart-item");
+
+    cartItems.forEach(function(item) {
+      var variantId = item.getAttribute("data-variant-id");
+
+      if (variantId === freeProductId) {
+        var quantityInput = item.querySelector(".quantity-input");
+        quantityInput.classList.add("hidden");
+      }
+    });
+  });
+</script>
+
+
 
 {%- style -%}
   .section-{{ section.id }}-padding {
