@@ -105,7 +105,7 @@
         console.log("3");
         {% if setting.id == "price_input" %}
           console.log("4")
-          {% assign dynamicPrice = setting.price_input %}
+          {% assign dynamicPrice = blocks.setting.price_input %}
         {% endif %}
       {% endfor %}
     {% endif %}
