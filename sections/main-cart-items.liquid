@@ -26,7 +26,7 @@
 
 
 <script>
-{% comment %}   document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener("DOMContentLoaded", function() {
     var freeProductId = "{{ freeProductId }}";
   alert("fid" + freeProductId)
 
@@ -41,27 +41,21 @@
 
         cartItems.forEach(function(item) {
           var variantId = item.variant_id;
-          console.log(variantId) {% endcomment %}
+          console.log(variantId)
 
-         document.addEventListener("DOMContentLoaded", function() {
-  var freeProductId = "{{ freeProductId }}"; // Replace with the appropriate value or liquid variable
-
-  var cartItems = document.querySelectorAll(".cart-item");
-
-  cartItems.forEach(function(item) {
-    var variantId = item.getAttribute("data-variant-id");
-
-    if (parseInt(variantId) === parseInt(freeProductId)) {
-      console.log("match");
-      var quantityInput = item.querySelector(".quantity-input");
-      if (quantityInput) {
-        quantityInput.classList.add("hidden");
-      }
-    }
+         if (parseInt(variantId) === parseInt(freeProductId)) {
+          console.log("match");
+            var quantityInput = document.querySelector('.cart-item[data-variant-id="' + variantId + '"] .gift');
+            if (quantityInput) {
+              quantityInput.classList.add("hidden");
+            }
+          }
+        });
+      })
+      .catch(function(error) {
+        console.log('Error fetching cart data:', error);
+      });
   });
-});
-
-      
 </script>
 
 
@@ -290,7 +284,7 @@
                         {{ 'products.product.quantity.label' | t }}
                       </label>
                       <quantity-input class="quantity cart-quantity">
-                        <button class="quantity__button no-js-hidden" {% if variantId == freeProductId %} gift{% endif %}name="minus" type="button">
+                        <button class="quantity__button no-js-hidden" {% if variantId == freeProductId %} {% endif %}name="minus" type="button">
                           <span class="visually-hidden">
                             {{- 'products.product.quantity.decrease' | t: product: item.product.title | escape -}}
                           </span>
