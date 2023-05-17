@@ -36,8 +36,9 @@ async function addProductToCart(productKey, quantity) {
     const response = await fetch('/cart.js');
     const cartData = await response.json();
     const totalPrice = cartData.items_subtotal_price;
+    const dynamicPrice = window.dynamicPrice;
 
-    if (totalPrice >= 100000) {
+    if (totalPrice >= dynamicPrice) {
       const formData = {
         'items': [{
           'id': productKey,
