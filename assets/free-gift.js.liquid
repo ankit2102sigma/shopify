@@ -129,6 +129,7 @@ const removeButton = document.querySelector('cart-remove-button');
 removeButton.addEventListener('click', handleClick);
 
 async function handleClick(event) {
+  console.log("remove");
   event.preventDefault(); // Prevent the default click behavior of the button
 
   const productKey = '45057131315495'; // Replace with the actual product key
