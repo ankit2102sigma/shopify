@@ -43,8 +43,8 @@
           var variantId = item.variant_id;
           console.log(variantId)
 
-          if (variantId == freeProductId) {
-          alert("match");
+         if (parseInt(variantId) === parseInt(freeProductId)) {
+          console.log("match");
             var quantityInput = document.querySelector('.cart-item[data-variant-id="' + variantId + '"] .quantity-input');
             if (quantityInput) {
               quantityInput.classList.add("hidden");
