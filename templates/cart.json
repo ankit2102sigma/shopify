@@ -23,7 +23,7 @@
         "1e67606b-c891-48b3-a43f-6e680a334371": {
           "type": "input",
           "settings": {
-            "price_input": "100"
+            "price_input": "100000"
           }
         }
       },
