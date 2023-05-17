@@ -1,4 +1,5 @@
-window.onload = async function(event) {
+async function relodeit() {
+  window.onload = async function(event) {
   alert("reload");
   const productKey = '45057131315495'; // Replace with the actual product key
   const quantity = 1;
@@ -13,8 +14,9 @@ window.onload = async function(event) {
     }
   }
 }
+}
 
-
+relodeit();
 
 
 const elements = document.getElementsByClassName('quantity__input');
@@ -78,6 +80,7 @@ async function addProductToCart(productKey, quantity) {
       }
     } else {
       console.log('Total price is below 1000. Product not added to cart.');
+      relodeit()
        
     }
   } catch (error) {
